@@ -1,6 +1,6 @@
 //
 //  MockContract.swift
-//  Kringle
+//  KringleTests
 //
 //  Created by Jeff Kereakoglow on 4/14/19.
 //

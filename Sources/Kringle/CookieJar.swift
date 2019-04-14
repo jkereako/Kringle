@@ -1,6 +1,6 @@
 //
 //  CookieJar.swift
-//  FBLPromises
+//  Kringle
 //
 //  Created by Jeff Kereakoglow on 4/14/19.
 //  Copyright © 2019 AlexisDigital. All rights reserved.
