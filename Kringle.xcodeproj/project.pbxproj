@@ -29,7 +29,6 @@
 		62A0D85222638DA400AE5CF4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */; };
 		62A0D85322638DA400AE5CF4 /* Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84822638DA400AE5CF4 /* Coder.swift */; };
 		62A0D85422638DA400AE5CF4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84922638DA400AE5CF4 /* NetworkError.swift */; };
-		62A0D85522638DA400AE5CF4 /* Kringle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84A22638DA400AE5CF4 /* Kringle.swift */; };
 		62A0D85622638DA400AE5CF4 /* URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84C22638DA400AE5CF4 /* URLSessionType.swift */; };
 		62A0D85722638DA400AE5CF4 /* CoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84D22638DA400AE5CF4 /* CoderType.swift */; };
 		62A0D85822638DA400AE5CF4 /* NetworkClientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */; };
@@ -154,7 +153,6 @@
 		62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		62A0D84822638DA400AE5CF4 /* Coder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coder.swift; sourceTree = "<group>"; };
 		62A0D84922638DA400AE5CF4 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		62A0D84A22638DA400AE5CF4 /* Kringle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kringle.swift; sourceTree = "<group>"; };
 		62A0D84C22638DA400AE5CF4 /* URLSessionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionType.swift; sourceTree = "<group>"; };
 		62A0D84D22638DA400AE5CF4 /* CoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoderType.swift; sourceTree = "<group>"; };
 		62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClientType.swift; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 				62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */,
 				62A0D84822638DA400AE5CF4 /* Coder.swift */,
 				62A0D84922638DA400AE5CF4 /* NetworkError.swift */,
-				62A0D84A22638DA400AE5CF4 /* Kringle.swift */,
 				62A0D84F22638DA400AE5CF4 /* Endpoint.swift */,
 				62A0D86222639CA200AE5CF4 /* CookieJar.swift */,
 			);
@@ -640,7 +637,6 @@
 				62A0D85422638DA400AE5CF4 /* NetworkError.swift in Sources */,
 				62A0D85222638DA400AE5CF4 /* HTTPMethod.swift in Sources */,
 				62A0D85122638DA400AE5CF4 /* URLSession+URLSessionType.swift in Sources */,
-				62A0D85522638DA400AE5CF4 /* Kringle.swift in Sources */,
 				62A0D86522639EFD00AE5CF4 /* CookieJar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
