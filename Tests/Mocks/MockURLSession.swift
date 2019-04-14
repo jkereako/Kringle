@@ -14,6 +14,7 @@ final class MockURLSession: URLSessionType {
     var mockStatusCode: Int = 200
     var mockHeaders: [String : String]?
 
+    private (set) var httpMethod: String!
     private (set) var url: URL!
 
     func task(with request: URLRequest,
@@ -21,6 +22,7 @@ final class MockURLSession: URLSessionType {
         -> URLSessionDataTask {
 
             url = request.url!
+            httpMethod = request.httpMethod!
 
             let urlResponse = HTTPURLResponse(
                 url: url,
