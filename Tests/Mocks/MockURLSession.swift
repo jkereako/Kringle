@@ -16,13 +16,15 @@ final class MockURLSession: URLSessionType {
 
     private (set) var httpMethod: String!
     private (set) var url: URL!
+    private (set) var body: Data!
 
     func task(with request: URLRequest,
               completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void)
         -> URLSessionDataTask {
 
-            url = request.url!
             httpMethod = request.httpMethod!
+            url = request.url!
+            body = request.httpBody
 
             let urlResponse = HTTPURLResponse(
                 url: url,

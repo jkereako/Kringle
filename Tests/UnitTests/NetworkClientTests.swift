@@ -12,10 +12,12 @@ final class NetworkClientTests: XCTestCase {
     private var networkClient: NetworkClientType!
     private var urlSession: MockURLSession!
     private var coder: Coder!
+    private var endpoint: MockEndpoint!
 
     override func setUp() {
         urlSession = MockURLSession()
         coder = Coder()
+        endpoint = MockEndpoint.company(companyName: "AAPL")
     }
 
     override func tearDown() {
@@ -24,14 +26,13 @@ final class NetworkClientTests: XCTestCase {
 
     func testSuccessfulGetRequest() {
         // Arrange
-        let apple = MockEndpoint.company(companyName: "AAPL")
         urlSession.mockStatusCode = 200
         networkClient = NetworkClient(urlSession: urlSession)
 
         // Act
-        networkClient.get(endpoint: apple).then { [unowned self] _ in
+        networkClient.get(endpoint: endpoint).then { [unowned self] _ in
             // Assert
-            self.helpAssertUrlRequest(endpoint: apple, httpMethod: .get)
+            self.helpAssertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
             }.catch { error in
                 XCTFail("Unexpected behavior: \(error.localizedDescription)")
         }
@@ -42,7 +43,6 @@ final class NetworkClientTests: XCTestCase {
         let contract = MockContract(
             title: "Apple", messages: ["hi", "lo", "open", "close"]
         )
-        let apple = MockEndpoint.company(companyName: "AAPL")
 
         coder.encode(contract).then { [unowned self] data in
             self.urlSession.mockData = data
@@ -50,9 +50,9 @@ final class NetworkClientTests: XCTestCase {
             self.networkClient = NetworkClient(urlSession: self.urlSession)
             
             // Act
-            self.networkClient.get(endpoint: apple, contract: MockContract.self).then { result in
+            self.networkClient.get(endpoint: self.endpoint, contract: MockContract.self).then { [unowned self] result in
                 // Assert
-                self.helpAssertUrlRequest(endpoint: apple, httpMethod: .get)
+                self.helpAssertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
 
                 XCTAssertEqual(contract.title, result.title)
                 XCTAssertEqual(contract.messages, result.messages)
@@ -62,24 +62,42 @@ final class NetworkClientTests: XCTestCase {
 
     func testUnsuccessfulGetRequest() {
         // Arrange
-        let apple = MockEndpoint.company(companyName: "AAPL")
         urlSession.mockStatusCode = 422
         networkClient = NetworkClient(urlSession: urlSession)
 
         // Act
-        networkClient.get(endpoint: apple).then {_ in
+        networkClient.get(endpoint: endpoint).then {_ in
             // Assert
             XCTFail("Unexpected behavior")
-            }.catch { error in
-                self.helpAssertUrlRequest(endpoint: apple, httpMethod: .get)
-                
+            }.catch { [unowned self] error in
+                self.helpAssertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
+
                 XCTAssertTrue(error is NetworkError)
         }
     }
 
-    func helpAssertUrlRequest(endpoint: Endpoint, httpMethod: HTTPMethod) {
-        XCTAssertTrue(self.urlSession.url.absoluteString.contains(endpoint.baseURL.absoluteString))
-        XCTAssertTrue(self.urlSession.url.absoluteString.contains(endpoint.path))
+    func testSuccessfulPutRequest() {
+        // Arrange
+        let body = "Treats of the place Where Oliver Twist was born".data(using: .utf8)!
+        urlSession.mockStatusCode = 200
+        networkClient = NetworkClient(urlSession: urlSession)
+
+        // Act
+        networkClient.put(endpoint: endpoint, body: body).then { [unowned self] _ in
+            // Assert
+            self.helpAssertUrlRequest(endpoint: self.endpoint, httpMethod: .put)
+            }.catch { error in
+                XCTFail("Unexpected behavior: \(error.localizedDescription)")
+        }
+    }
+
+    func helpAssertUrlRequest(endpoint: Endpoint, httpMethod: HTTPMethod, body: Data? = nil) {
+        XCTAssertTrue(urlSession.url.absoluteString.contains(endpoint.baseURL.absoluteString))
+        XCTAssertTrue(urlSession.url.absoluteString.contains(endpoint.path))
         XCTAssertEqual(httpMethod.rawValue, self.urlSession.httpMethod)
+
+        if let aBody = body {
+            XCTAssertEqual(aBody, urlSession.body)
+        }
     }
 }
