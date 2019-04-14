@@ -8,7 +8,7 @@
 import Foundation
 import Promises
 
-public final class NetworkClient: NetworkClientType {
+final public class NetworkClient: NetworkClientType {
     fileprivate let urlSession: URLSessionType
     fileprivate let headers: [String: String]
     fileprivate let coder: Coder
@@ -134,6 +134,7 @@ private extension NetworkClient {
                 switch httpResponse.statusCode {
                 // Success!
                 case 200...299:
+                    
                     fulfill(data)
 
                 // Redirection

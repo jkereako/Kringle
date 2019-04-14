@@ -38,6 +38,7 @@
 		62A0D85C22638E5C00AE5CF4 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D83B22638D8400AE5CF4 /* XCTestManifests.swift */; };
 		62A0D85F22638E6200AE5CF4 /* MockContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82E22637D9300AE5CF4 /* MockContract.swift */; };
 		62A0D86022638E6200AE5CF4 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D834226387FD00AE5CF4 /* MockURLSessionDataTask.swift */; };
+		62A0D86522639EFD00AE5CF4 /* CookieJar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D86222639CA200AE5CF4 /* CookieJar.swift */; };
 		OBJ_100 /* FBLPromise+Delay.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* FBLPromise+Delay.m */; };
 		OBJ_101 /* FBLPromise+Do.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* FBLPromise+Do.m */; };
 		OBJ_102 /* FBLPromise+Race.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* FBLPromise+Race.m */; };
@@ -156,6 +157,7 @@
 		62A0D84D22638DA400AE5CF4 /* CoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoderType.swift; sourceTree = "<group>"; };
 		62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClientType.swift; sourceTree = "<group>"; };
 		62A0D84F22638DA400AE5CF4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		62A0D86222639CA200AE5CF4 /* CookieJar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJar.swift; sourceTree = "<group>"; };
 		"Kringle::Kringle::Product" /* Kringle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kringle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Kringle::KringleTests::Product" /* KringleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = KringleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_17 /* FBLPromise+All.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FBLPromise+All.m"; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				62A0D84922638DA400AE5CF4 /* NetworkError.swift */,
 				62A0D84A22638DA400AE5CF4 /* Kringle.swift */,
 				62A0D84F22638DA400AE5CF4 /* Endpoint.swift */,
+				62A0D86222639CA200AE5CF4 /* CookieJar.swift */,
 			);
 			path = Kringle;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				62A0D85222638DA400AE5CF4 /* HTTPMethod.swift in Sources */,
 				62A0D85122638DA400AE5CF4 /* URLSession+URLSessionType.swift in Sources */,
 				62A0D85522638DA400AE5CF4 /* Kringle.swift in Sources */,
+				62A0D86522639EFD00AE5CF4 /* CookieJar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
