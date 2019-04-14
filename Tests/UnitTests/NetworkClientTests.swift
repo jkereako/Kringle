@@ -85,9 +85,31 @@ final class NetworkClientTests: XCTestCase {
         // Act
         networkClient.put(endpoint: endpoint, body: body).then { [unowned self] _ in
             // Assert
-            self.helpAssertUrlRequest(endpoint: self.endpoint, httpMethod: .put)
+            self.helpAssertUrlRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
             }.catch { error in
                 XCTFail("Unexpected behavior: \(error.localizedDescription)")
+        }
+    }
+
+    func testSuccessfulPutRequestWithResponse() {
+        // Arrange
+        let contract = MockContract(
+            title: "Apple", messages: ["hi", "lo", "open", "close"]
+        )
+        let body = "Treats of the place Where Oliver Twist was born".data(using: .utf8)!
+        coder.encode(contract).then { [unowned self] data in
+            self.urlSession.mockData = data
+            self.urlSession.mockStatusCode = 200
+            self.networkClient = NetworkClient(urlSession: self.urlSession)
+
+            // Act
+            self.networkClient.put(endpoint: self.endpoint, body: body, contract: MockContract.self).then { [unowned self] result in
+                // Assert
+                self.helpAssertUrlRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
+
+                XCTAssertEqual(contract.title, result.title)
+                XCTAssertEqual(contract.messages, result.messages)
+            }
         }
     }
 
