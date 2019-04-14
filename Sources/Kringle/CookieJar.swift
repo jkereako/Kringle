@@ -15,12 +15,28 @@ final public class CookieJar {
         self.endpoint = endpoint
     }
 
-    public func setCookie(_ value: String, forKey key: String) {
+    public func setCookies(with httpURLResponse: HTTPURLResponse) {
+        guard let headerFields = httpURLResponse.allHeaderFields as? [String: String] else {
+            return
+        }
+
+        let cookies = HTTPCookie.cookies(
+            withResponseHeaderFields: headerFields, for: endpoint.baseURL
+        )
+
+        if cookies.count < 1 {
+            return
+        }
+
+        HTTPCookieStorage.shared.setCookies(cookies, for: endpoint.baseURL, mainDocumentURL: nil)
+    }
+
+    public func setCookie(_ value: String, forName name: String) {
         let host = endpoint.baseURL.host!
         let cookieProperties: [HTTPCookiePropertyKey : Any]
-
         let domain = "." + host.components(separatedBy: ".").dropFirst().joined(separator: ".")
-        cookieProperties = [.name: key,
+
+        cookieProperties = [.name: name,
                             .value: value,
                             .path: "/",
                             .domain: domain]
@@ -30,25 +46,33 @@ final public class CookieJar {
         HTTPCookieStorage.shared.setCookie(cookie)
     }
 
-    public func value(forKey key: String) -> String? {
+    public func cookie(forName name: String) -> String? {
         guard let cookies = HTTPCookieStorage.shared.cookies(for: endpoint.baseURL) else {
             return nil
         }
 
-        let cookie = cookies.first { $0.name == key }
+        let cookie = cookies.first { $0.name == name }
 
         return cookie?.value ?? nil
     }
 
-    public func clearCookies() -> Bool {
+    public func deleteCookie(_ name: String) -> Bool {
         guard let cookies = HTTPCookieStorage.shared.cookies(for: endpoint.baseURL) else {
             return false
         }
 
-        for cookie in cookies {
-            HTTPCookieStorage.shared.deleteCookie(cookie)
+        guard let cookie = cookies.first(where: { $0.name == name }) else {
+            return false
         }
 
+        HTTPCookieStorage.shared.deleteCookie(cookie)
+
         return true
+    }
+
+    public func clearCookies() {
+        HTTPCookieStorage.shared.cookies(for: endpoint.baseURL)?.forEach {
+            HTTPCookieStorage.shared.deleteCookie($0)
+        }
     }
 }

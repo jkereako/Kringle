@@ -27,3 +27,7 @@ extension MockEndpoint: Endpoint {
         }
     }
 }
+
+extension MockEndpoint {
+    var domain: String { return ".iextrading.com" }
+}

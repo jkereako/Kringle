@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		625D7DA92263D888009D2887 /* CookieJarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D7DA82263D888009D2887 /* CookieJarTests.swift */; };
 		62A0D82522636F6000AE5CF4 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */; };
 		62A0D82D226374B600AE5CF4 /* MockEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82B226374B200AE5CF4 /* MockEndpoint.swift */; };
 		62A0D85022638DA400AE5CF4 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84422638DA400AE5CF4 /* NetworkClient.swift */; };
@@ -140,6 +141,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		625D7DA82263D888009D2887 /* CookieJarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJarTests.swift; sourceTree = "<group>"; };
 		62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		62A0D82B226374B200AE5CF4 /* MockEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndpoint.swift; sourceTree = "<group>"; };
 		62A0D82E22637D9300AE5CF4 /* MockContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContract.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				62A0D83922638D8400AE5CF4 /* NetworkClientTests.swift */,
 				62A0D83A22638D8400AE5CF4 /* CoderTests.swift */,
 				62A0D83B22638D8400AE5CF4 /* XCTestManifests.swift */,
+				625D7DA82263D888009D2887 /* CookieJarTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 			buildActionMask = 0;
 			files = (
 				62A0D85C22638E5C00AE5CF4 /* XCTestManifests.swift in Sources */,
+				625D7DA92263D888009D2887 /* CookieJarTests.swift in Sources */,
 				62A0D82522636F6000AE5CF4 /* MockURLSession.swift in Sources */,
 				62A0D82D226374B600AE5CF4 /* MockEndpoint.swift in Sources */,
 				62A0D85A22638E5C00AE5CF4 /* NetworkClientTests.swift in Sources */,
