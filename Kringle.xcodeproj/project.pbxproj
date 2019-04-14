@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -21,21 +21,23 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		62A0D81122636E3800AE5CF4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D80722636CCD00AE5CF4 /* HTTPMethod.swift */; };
-		62A0D81222636E3800AE5CF4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D80922636CE300AE5CF4 /* Endpoint.swift */; };
-		62A0D81322636E3800AE5CF4 /* Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D80B22636D0600AE5CF4 /* Coder.swift */; };
-		62A0D81422636E3800AE5CF4 /* CoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D80E22636D5200AE5CF4 /* CoderType.swift */; };
-		62A0D81722636E6000AE5CF4 /* URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D81522636E5700AE5CF4 /* URLSessionType.swift */; };
-		62A0D81922636E8000AE5CF4 /* NetworkClientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D81822636E8000AE5CF4 /* NetworkClientType.swift */; };
-		62A0D81B22636EA400AE5CF4 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D81A22636EA400AE5CF4 /* NetworkClient.swift */; };
-		62A0D81E22636EE500AE5CF4 /* URLSession+URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D81D22636EE500AE5CF4 /* URLSession+URLSessionType.swift */; };
-		62A0D82122636F2000AE5CF4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82022636F2000AE5CF4 /* NetworkError.swift */; };
 		62A0D82522636F6000AE5CF4 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */; };
-		62A0D82822636FA000AE5CF4 /* CoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82622636F9900AE5CF4 /* CoderTests.swift */; };
-		62A0D82A226373E300AE5CF4 /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D829226373E300AE5CF4 /* NetworkClientTests.swift */; };
 		62A0D82D226374B600AE5CF4 /* MockEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82B226374B200AE5CF4 /* MockEndpoint.swift */; };
-		62A0D82F22637D9300AE5CF4 /* MockContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82E22637D9300AE5CF4 /* MockContract.swift */; };
-		62A0D835226387FD00AE5CF4 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D834226387FD00AE5CF4 /* MockURLSessionDataTask.swift */; };
+		62A0D85022638DA400AE5CF4 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84422638DA400AE5CF4 /* NetworkClient.swift */; };
+		62A0D85122638DA400AE5CF4 /* URLSession+URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84622638DA400AE5CF4 /* URLSession+URLSessionType.swift */; };
+		62A0D85222638DA400AE5CF4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */; };
+		62A0D85322638DA400AE5CF4 /* Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84822638DA400AE5CF4 /* Coder.swift */; };
+		62A0D85422638DA400AE5CF4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84922638DA400AE5CF4 /* NetworkError.swift */; };
+		62A0D85522638DA400AE5CF4 /* Kringle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84A22638DA400AE5CF4 /* Kringle.swift */; };
+		62A0D85622638DA400AE5CF4 /* URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84C22638DA400AE5CF4 /* URLSessionType.swift */; };
+		62A0D85722638DA400AE5CF4 /* CoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84D22638DA400AE5CF4 /* CoderType.swift */; };
+		62A0D85822638DA400AE5CF4 /* NetworkClientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */; };
+		62A0D85922638DA400AE5CF4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84F22638DA400AE5CF4 /* Endpoint.swift */; };
+		62A0D85A22638E5C00AE5CF4 /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D83922638D8400AE5CF4 /* NetworkClientTests.swift */; };
+		62A0D85B22638E5C00AE5CF4 /* CoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D83A22638D8400AE5CF4 /* CoderTests.swift */; };
+		62A0D85C22638E5C00AE5CF4 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D83B22638D8400AE5CF4 /* XCTestManifests.swift */; };
+		62A0D85F22638E6200AE5CF4 /* MockContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82E22637D9300AE5CF4 /* MockContract.swift */; };
+		62A0D86022638E6200AE5CF4 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D834226387FD00AE5CF4 /* MockURLSessionDataTask.swift */; };
 		OBJ_100 /* FBLPromise+Delay.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* FBLPromise+Delay.m */; };
 		OBJ_101 /* FBLPromise+Do.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* FBLPromise+Do.m */; };
 		OBJ_102 /* FBLPromise+Race.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* FBLPromise+Race.m */; };
@@ -49,12 +51,9 @@
 		OBJ_110 /* FBLPromise+Wrap.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* FBLPromise+Wrap.m */; };
 		OBJ_111 /* FBLPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* FBLPromise.m */; };
 		OBJ_112 /* FBLPromiseError.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* FBLPromiseError.m */; };
-		OBJ_119 /* Kringle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Kringle.swift */; };
 		OBJ_121 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Promises::Promises::Product" /* Promises.framework */; };
 		OBJ_122 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Promises::FBLPromises::Product" /* FBLPromises.framework */; };
 		OBJ_131 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_142 /* KringleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* KringleTests.swift */; };
-		OBJ_143 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
 		OBJ_145 /* Kringle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Kringle::Kringle::Product" /* Kringle.framework */; };
 		OBJ_146 /* Promises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Promises::Promises::Product" /* Promises.framework */; };
 		OBJ_147 /* FBLPromises.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "Promises::FBLPromises::Product" /* FBLPromises.framework */; };
@@ -140,25 +139,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		62A0D80722636CCD00AE5CF4 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		62A0D80922636CE300AE5CF4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		62A0D80B22636D0600AE5CF4 /* Coder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coder.swift; sourceTree = "<group>"; };
-		62A0D80E22636D5200AE5CF4 /* CoderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoderType.swift; sourceTree = "<group>"; };
-		62A0D81522636E5700AE5CF4 /* URLSessionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionType.swift; sourceTree = "<group>"; };
-		62A0D81822636E8000AE5CF4 /* NetworkClientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientType.swift; sourceTree = "<group>"; };
-		62A0D81A22636EA400AE5CF4 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		62A0D81D22636EE500AE5CF4 /* URLSession+URLSessionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+URLSessionType.swift"; sourceTree = "<group>"; };
-		62A0D82022636F2000AE5CF4 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
-		62A0D82622636F9900AE5CF4 /* CoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoderTests.swift; sourceTree = "<group>"; };
-		62A0D829226373E300AE5CF4 /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
 		62A0D82B226374B200AE5CF4 /* MockEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndpoint.swift; sourceTree = "<group>"; };
 		62A0D82E22637D9300AE5CF4 /* MockContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContract.swift; sourceTree = "<group>"; };
 		62A0D834226387FD00AE5CF4 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		62A0D83922638D8400AE5CF4 /* NetworkClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
+		62A0D83A22638D8400AE5CF4 /* CoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoderTests.swift; sourceTree = "<group>"; };
+		62A0D83B22638D8400AE5CF4 /* XCTestManifests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		62A0D84422638DA400AE5CF4 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		62A0D84622638DA400AE5CF4 /* URLSession+URLSessionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+URLSessionType.swift"; sourceTree = "<group>"; };
+		62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		62A0D84822638DA400AE5CF4 /* Coder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coder.swift; sourceTree = "<group>"; };
+		62A0D84922638DA400AE5CF4 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		62A0D84A22638DA400AE5CF4 /* Kringle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kringle.swift; sourceTree = "<group>"; };
+		62A0D84C22638DA400AE5CF4 /* URLSessionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionType.swift; sourceTree = "<group>"; };
+		62A0D84D22638DA400AE5CF4 /* CoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoderType.swift; sourceTree = "<group>"; };
+		62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClientType.swift; sourceTree = "<group>"; };
+		62A0D84F22638DA400AE5CF4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		"Kringle::Kringle::Product" /* Kringle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kringle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Kringle::KringleTests::Product" /* KringleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = KringleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_12 /* KringleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KringleTests.swift; sourceTree = "<group>"; };
-		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* FBLPromise+All.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FBLPromise+All.m"; sourceTree = "<group>"; };
 		OBJ_18 /* FBLPromise+Always.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FBLPromise+Always.m"; sourceTree = "<group>"; };
 		OBJ_19 /* FBLPromise+Any.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FBLPromise+Any.m"; sourceTree = "<group>"; };
@@ -223,7 +222,6 @@
 		OBJ_81 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/jkereako/src/swift/Kringle/.build/checkouts/promises/Package.swift; sourceTree = "<group>"; };
 		OBJ_87 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_88 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		OBJ_9 /* Kringle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kringle.swift; sourceTree = "<group>"; };
 		"Promises::FBLPromises::Product" /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Promises::Promises::Product" /* Promises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Promises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -266,24 +264,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		62A0D81C22636EC000AE5CF4 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				62A0D81D22636EE500AE5CF4 /* URLSession+URLSessionType.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		62A0D81F22636EF500AE5CF4 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				62A0D80E22636D5200AE5CF4 /* CoderType.swift */,
-				62A0D81522636E5700AE5CF4 /* URLSessionType.swift */,
-				62A0D81822636E8000AE5CF4 /* NetworkClientType.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		62A0D82222636F4D00AE5CF4 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,26 +275,65 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		OBJ_10 /* Tests */ = {
+		62A0D83622638D8400AE5CF4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				62A0D82222636F4D00AE5CF4 /* Mocks */,
-				OBJ_11 /* KringleTests */,
+				62A0D83722638D8400AE5CF4 /* UnitTests */,
 			);
-			name = Tests;
-			sourceTree = SOURCE_ROOT;
+			path = Tests;
+			sourceTree = "<group>";
 		};
-		OBJ_11 /* KringleTests */ = {
+		62A0D83722638D8400AE5CF4 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_12 /* KringleTests.swift */,
-				OBJ_13 /* XCTestManifests.swift */,
-				62A0D82622636F9900AE5CF4 /* CoderTests.swift */,
-				62A0D829226373E300AE5CF4 /* NetworkClientTests.swift */,
+				62A0D83922638D8400AE5CF4 /* NetworkClientTests.swift */,
+				62A0D83A22638D8400AE5CF4 /* CoderTests.swift */,
+				62A0D83B22638D8400AE5CF4 /* XCTestManifests.swift */,
 			);
-			name = KringleTests;
-			path = Tests/KringleTests;
-			sourceTree = SOURCE_ROOT;
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		62A0D84222638DA400AE5CF4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				62A0D84322638DA400AE5CF4 /* Kringle */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		62A0D84322638DA400AE5CF4 /* Kringle */ = {
+			isa = PBXGroup;
+			children = (
+				62A0D84522638DA400AE5CF4 /* Extensions */,
+				62A0D84B22638DA400AE5CF4 /* Protocols */,
+				62A0D84422638DA400AE5CF4 /* NetworkClient.swift */,
+				62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */,
+				62A0D84822638DA400AE5CF4 /* Coder.swift */,
+				62A0D84922638DA400AE5CF4 /* NetworkError.swift */,
+				62A0D84A22638DA400AE5CF4 /* Kringle.swift */,
+				62A0D84F22638DA400AE5CF4 /* Endpoint.swift */,
+			);
+			path = Kringle;
+			sourceTree = "<group>";
+		};
+		62A0D84522638DA400AE5CF4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				62A0D84622638DA400AE5CF4 /* URLSession+URLSessionType.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		62A0D84B22638DA400AE5CF4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				62A0D84C22638DA400AE5CF4 /* URLSessionType.swift */,
+				62A0D84D22638DA400AE5CF4 /* CoderType.swift */,
+				62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
 		};
 		OBJ_14 /* Dependencies */ = {
 			isa = PBXGroup;
@@ -393,18 +412,17 @@
 			path = include;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				62A0D84222638DA400AE5CF4 /* Sources */,
 				OBJ_6 /* Package.swift */,
-				OBJ_7 /* Sources */,
-				OBJ_10 /* Tests */,
+				62A0D83622638D8400AE5CF4 /* Tests */,
 				OBJ_14 /* Dependencies */,
 				OBJ_82 /* Products */,
 				OBJ_87 /* LICENSE */,
 				OBJ_88 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_59 /* FBLPromisesTestHelpers */ = {
@@ -440,30 +458,6 @@
 			);
 			name = Promises;
 			path = .build/checkouts/promises/Sources/Promises;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_7 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_8 /* Kringle */,
-			);
-			name = Sources;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_8 /* Kringle */ = {
-			isa = PBXGroup;
-			children = (
-				62A0D81F22636EF500AE5CF4 /* Protocols */,
-				62A0D81C22636EC000AE5CF4 /* Extensions */,
-				OBJ_9 /* Kringle.swift */,
-				62A0D80722636CCD00AE5CF4 /* HTTPMethod.swift */,
-				62A0D80922636CE300AE5CF4 /* Endpoint.swift */,
-				62A0D80B22636D0600AE5CF4 /* Coder.swift */,
-				62A0D81A22636EA400AE5CF4 /* NetworkClient.swift */,
-				62A0D82022636F2000AE5CF4 /* NetworkError.swift */,
-			);
-			name = Kringle;
-			path = Sources/Kringle;
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_80 /* PromisesTestHelpers */ = {
@@ -592,8 +586,10 @@
 		OBJ_1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = AD;
 				LastSwiftMigration = 9999;
 				LastUpgradeCheck = 9999;
+				ORGANIZATIONNAME = AlexisDigital;
 				TargetAttributes = {
 					"Promises::FBLPromises" = {
 						LastSwiftMigration = 1020;
@@ -601,14 +597,14 @@
 				};
 			};
 			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Kringle" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_82 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -629,18 +625,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				62A0D81722636E6000AE5CF4 /* URLSessionType.swift in Sources */,
-				62A0D81122636E3800AE5CF4 /* HTTPMethod.swift in Sources */,
-				62A0D81222636E3800AE5CF4 /* Endpoint.swift in Sources */,
-				OBJ_119 /* Kringle.swift in Sources */,
-				62A0D82F22637D9300AE5CF4 /* MockContract.swift in Sources */,
-				62A0D81922636E8000AE5CF4 /* NetworkClientType.swift in Sources */,
-				62A0D81322636E3800AE5CF4 /* Coder.swift in Sources */,
-				62A0D81422636E3800AE5CF4 /* CoderType.swift in Sources */,
-				62A0D81B22636EA400AE5CF4 /* NetworkClient.swift in Sources */,
-				62A0D835226387FD00AE5CF4 /* MockURLSessionDataTask.swift in Sources */,
-				62A0D81E22636EE500AE5CF4 /* URLSession+URLSessionType.swift in Sources */,
-				62A0D82122636F2000AE5CF4 /* NetworkError.swift in Sources */,
+				62A0D85622638DA400AE5CF4 /* URLSessionType.swift in Sources */,
+				62A0D85922638DA400AE5CF4 /* Endpoint.swift in Sources */,
+				62A0D85022638DA400AE5CF4 /* NetworkClient.swift in Sources */,
+				62A0D85322638DA400AE5CF4 /* Coder.swift in Sources */,
+				62A0D85822638DA400AE5CF4 /* NetworkClientType.swift in Sources */,
+				62A0D85722638DA400AE5CF4 /* CoderType.swift in Sources */,
+				62A0D85422638DA400AE5CF4 /* NetworkError.swift in Sources */,
+				62A0D85222638DA400AE5CF4 /* HTTPMethod.swift in Sources */,
+				62A0D85122638DA400AE5CF4 /* URLSession+URLSessionType.swift in Sources */,
+				62A0D85522638DA400AE5CF4 /* Kringle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,12 +650,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				62A0D82A226373E300AE5CF4 /* NetworkClientTests.swift in Sources */,
+				62A0D85C22638E5C00AE5CF4 /* XCTestManifests.swift in Sources */,
 				62A0D82522636F6000AE5CF4 /* MockURLSession.swift in Sources */,
-				OBJ_142 /* KringleTests.swift in Sources */,
-				OBJ_143 /* XCTestManifests.swift in Sources */,
 				62A0D82D226374B600AE5CF4 /* MockEndpoint.swift in Sources */,
-				62A0D82822636FA000AE5CF4 /* CoderTests.swift in Sources */,
+				62A0D85A22638E5C00AE5CF4 /* NetworkClientTests.swift in Sources */,
+				62A0D85B22638E5C00AE5CF4 /* CoderTests.swift in Sources */,
+				62A0D85F22638E6200AE5CF4 /* MockContract.swift in Sources */,
+				62A0D86022638E6200AE5CF4 /* MockURLSessionDataTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,7 +775,10 @@
 				);
 				INFOPLIST_FILE = Kringle.xcodeproj/Kringle_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -811,7 +809,10 @@
 				);
 				INFOPLIST_FILE = Kringle.xcodeproj/Kringle_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -873,7 +874,11 @@
 				);
 				INFOPLIST_FILE = Kringle.xcodeproj/KringleTests_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -901,7 +906,11 @@
 				);
 				INFOPLIST_FILE = Kringle.xcodeproj/KringleTests_Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@loader_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
@@ -927,7 +936,10 @@
 					"$(SRCROOT)/.build/checkouts/promises/Sources/FBLPromises/include",
 				);
 				INFOPLIST_FILE = Kringle.xcodeproj/Promises_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap";
@@ -954,7 +966,10 @@
 					"$(SRCROOT)/.build/checkouts/promises/Sources/FBLPromises/include",
 				);
 				INFOPLIST_FILE = Kringle.xcodeproj/Promises_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(SRCROOT)/.build/checkouts/promises/Sources/FBLPromises/include/module.modulemap";
@@ -1032,7 +1047,8 @@
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -1052,7 +1068,10 @@
 					"$(SRCROOT)/.build/checkouts/promises/Sources/FBLPromises/include",
 				);
 				INFOPLIST_FILE = Kringle.xcodeproj/FBLPromises_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -1082,7 +1101,10 @@
 					"$(SRCROOT)/.build/checkouts/promises/Sources/FBLPromises/include",
 				);
 				INFOPLIST_FILE = Kringle.xcodeproj/FBLPromises_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
