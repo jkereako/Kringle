@@ -166,7 +166,8 @@ private extension NetworkClient {
                     assertionFailure("Unexpected response code.")
                     reject(NetworkError.unknown)
                 }
-                
+
+                // Save cookies for all responses that have the header "Set-Cookie"
                 cookieJar.setCookies(with: httpResponse)
             }
             

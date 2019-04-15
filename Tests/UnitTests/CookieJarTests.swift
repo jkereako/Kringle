@@ -116,6 +116,30 @@ final class CookieJarTests: XCTestCase {
         // Assert
         XCTAssertEqual(0, HTTPCookieStorage.shared.cookies!.count)
     }
+
+
+    func testSetCookiesHeader() {
+        // Arrange
+        let name = "tl"
+        let value = "tyrion_lanister"
+        let urlSession = MockURLSession()
+        let networkClient = NetworkClient(urlSession: urlSession)
+
+        urlSession.mockStatusCode = 200
+        urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value)"]
+
+        // Act
+        networkClient.get(endpoint: endpoint).then { [unowned self] _ in
+            let cookie = self.cookieJar.cookie(forName: name)
+
+            // Assert
+            XCTAssertEqual(1, HTTPCookieStorage.shared.cookies!.count)
+            XCTAssertEqual(value, cookie)
+
+            }.catch { error in
+                XCTFail("Unexpected behavior: \(error.localizedDescription)")
+        }
+    }
 }
 
 // MARK: - Helpers
