@@ -14,17 +14,22 @@ public final class Coder: CoderType {
 
     /// The dispatch queue for the background thread.
     private let dispatchQueue = DispatchQueue(label: "JSONCoderQueue")
+    private let encoder: JSONEncoder
+    private let decoder: JSONDecoder
 
-    public init() {}
+    public init() {
+        encoder = JSONEncoder()
+        decoder = JSONDecoder()
+    }
 
     /// Asynchronously encodes a contract to JSON data.
     ///
     /// - Parameter contract: The struct from which JSON will be serialized
     /// - Returns: a Data instance of encoded JSON
     public func encode<T: Encodable>(_ contract: T) -> Promise<Data> {
-        return Promise<Data>(on: dispatchQueue) { fulfill, reject in
+        return Promise<Data>(on: dispatchQueue) { [unowned self] fulfill, reject in
             do {
-                let encoded = try JSONEncoder().encode(contract)
+                let encoded = try self.encoder.encode(contract)
 
                 fulfill(encoded)
             } catch {
@@ -40,9 +45,9 @@ public final class Coder: CoderType {
     ///   - to: The struct to which JSON will be deserialized
     /// - Returns: A contract
     public func decode<T: Decodable>(_ data: Data, to: T.Type) -> Promise<T> {
-        return Promise<T>(on: dispatchQueue) { fulfill, reject in
+        return Promise<T>(on: dispatchQueue) { [unowned self] fulfill, reject in
             do {
-                let decoded = try JSONDecoder().decode(T.self, from: data)
+                let decoded = try self.decoder.decode(T.self, from: data)
 
                 fulfill(decoded)
             } catch {

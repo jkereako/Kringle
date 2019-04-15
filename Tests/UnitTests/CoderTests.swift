@@ -17,7 +17,7 @@ final class CoderTests: XCTestCase {
         coder = Coder()
     }
 
-    func testDecoding() {
+    func testDecoder() {
         let json = "{\"title\":\"success\",\"messages\":[\"Ibizan\",\"afghan\",\"basset\",\"blood\",\"english\",\"walker\"]}"
         let jsonData = json.data(using: .utf8)!
 
@@ -27,7 +27,7 @@ final class CoderTests: XCTestCase {
         }
     }
 
-    func testEncoding() {
+    func testEncoder() {
         // Arrange
         let pawn = "pawn"
         let rook = "rook"
