@@ -17,7 +17,7 @@ final class CoderTests: XCTestCase {
         coder = Coder()
     }
 
-    func testDecoder() {
+    func testDecoderFulfillsPromiseWhenDecodingValidJSON() {
         let json = "{\"title\":\"success\",\"messages\":[\"Ibizan\",\"afghan\",\"basset\",\"blood\",\"english\",\"walker\"]}"
         let jsonData = json.data(using: .utf8)!
 
@@ -27,7 +27,16 @@ final class CoderTests: XCTestCase {
         }
     }
 
-    func testEncoder() {
+    func testDecoderRejectsPromiseWhenDecodingInvalidJSON() {
+        let json = "{not_valid_json(@*"
+        let jsonData = json.data(using: .utf8)!
+
+        _ = coder.decode(jsonData, to: MockContract.self).then { contract in
+            XCTFail("Unexpected behavior")
+            }.catch { _ in XCTAssertTrue(true) }
+    }
+
+    func testEncoderFulfillsPromiseWhenEncodingValidJSON() {
         // Arrange
         let pawn = "pawn"
         let rook = "rook"
