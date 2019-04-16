@@ -118,7 +118,7 @@ final class CookieJarTests: XCTestCase {
     }
 
 
-    func testSetCookiesHeader() {
+    func testSetCookiesHeaderStoresCookie() {
         // Arrange
         let name = "tl"
         let value = "tyrion_lanister"
@@ -126,7 +126,7 @@ final class CookieJarTests: XCTestCase {
         let networkClient = NetworkClient(urlSession: urlSession)
 
         urlSession.mockStatusCode = 200
-        urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value)"]
+        urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value); Expires=Sun, 21 Apr 2019 14:22:11"]
 
         // Act
         networkClient.get(endpoint: endpoint).then { [unowned self] _ in
@@ -136,6 +136,28 @@ final class CookieJarTests: XCTestCase {
             XCTAssertEqual(1, HTTPCookieStorage.shared.cookies!.count)
             XCTAssertEqual(value, cookie)
 
+            }.catch { error in
+                XCTFail("Unexpected behavior: \(error.localizedDescription)")
+        }
+    }
+    
+    func testExpiredSetCookiesHeaderDeletesCookies() {
+        // Arrange
+        let name = "tl"
+        let value = "tyrion_lanister"
+        let urlSession = MockURLSession()
+        let networkClient = NetworkClient(urlSession: urlSession)
+        urlSession.mockStatusCode = 200
+        urlSession.mockHeaders = ["Set-Cookie": "\(name); Expires=Mon, 15 Apr 2019 14:22:11"]
+        
+        setCookie(name: name, value: value)
+        
+        // Act
+        networkClient.get(endpoint: endpoint).then { [unowned self] _ in
+            // Assert
+            print(HTTPCookieStorage.shared.cookies!)
+            XCTAssertEqual(0, HTTPCookieStorage.shared.cookies!.count)
+            
             }.catch { error in
                 XCTFail("Unexpected behavior: \(error.localizedDescription)")
         }
