@@ -222,8 +222,6 @@
 		OBJ_78 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		OBJ_79 /* PromiseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromiseError.swift; sourceTree = "<group>"; };
 		OBJ_81 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = /Users/jkereako/src/swift/Kringle/.build/checkouts/promises/Package.swift; sourceTree = "<group>"; };
-		OBJ_87 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		OBJ_88 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		"Promises::FBLPromises::Product" /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Promises::Promises::Product" /* Promises.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Promises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -423,8 +421,6 @@
 				62A0D83622638D8400AE5CF4 /* Tests */,
 				OBJ_14 /* Dependencies */,
 				OBJ_82 /* Products */,
-				OBJ_87 /* LICENSE */,
-				OBJ_88 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
