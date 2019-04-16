@@ -1,6 +1,7 @@
 # Xcode
 #
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# gitignore contributors: remember to update Global/Xcode.gitignore,
+# Objective-C.gitignore & Swift.gitignore
 
 ## Build generated
 build/
@@ -34,7 +35,8 @@ playground.xcworkspace
 
 # Swift Package Manager
 #
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Add this line if you want to avoid checking in source code from Swift Package
+# Manager dependencies.
 # Packages/
 # Package.pins
 # Package.resolved
@@ -46,7 +48,7 @@ playground.xcworkspace
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-# Pods/
+Pods/
 
 # Carthage
 #
