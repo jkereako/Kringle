@@ -15,9 +15,12 @@ let package = Package(
     targets: [
         .target(
             name: "Kringle",
-            dependencies: ["Promises"]),
+            dependencies: ["Promises"]
+        ),
         .testTarget(
             name: "KringleTests",
-            dependencies: ["Kringle"]),
+            dependencies: ["Kringle"],
+            path: "Tests/UnitTests"
+        )
     ]
 )
