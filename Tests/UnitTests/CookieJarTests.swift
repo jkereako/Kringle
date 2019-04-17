@@ -31,12 +31,11 @@ final class CookieJarTests: XCTestCase {
             var path: String { return "/" }
             var baseURL: URL { return URL(string: "https://apple.com/1.0")! }
         }
+        
+        cookieJar = CookieJar(endpoint: TestEndpoint.timCook)
 
-        // Act
-        let domain = cookieJar.cookieDomain(for: TestEndpoint.timCook)
-
-        // Assert
-        XCTAssertEqual(".apple.com", domain)
+        // Act and Assert
+        XCTAssertEqual(".apple.com", cookieJar.domain)
     }
 
     func testCookieDomainWithSubdomain() {
@@ -48,11 +47,10 @@ final class CookieJarTests: XCTestCase {
             var baseURL: URL { return URL(string: "https://api.apple.com/1.0")! }
         }
 
-        // Act
-        let domain = cookieJar.cookieDomain(for: TestEndpoint.timCook)
-
-        // Assert
-        XCTAssertEqual(".apple.com", domain)
+        cookieJar = CookieJar(endpoint: TestEndpoint.timCook)
+        
+        // Act and Assert
+        XCTAssertEqual(".apple.com", cookieJar.domain)
     }
 
     func testCookieDomainWithTwoSubdomains() {
@@ -64,11 +62,10 @@ final class CookieJarTests: XCTestCase {
             var baseURL: URL { return URL(string: "https://www.api.apple.com/1.0")! }
         }
 
-        // Act
-        let domain = cookieJar.cookieDomain(for: TestEndpoint.timCook)
-
-        // Assert
-        XCTAssertEqual(".apple.com", domain)
+        cookieJar = CookieJar(endpoint: TestEndpoint.timCook)
+        
+        // Act and Assert
+        XCTAssertEqual(".apple.com", cookieJar.domain)
     }
 
     func testSetCookie() {

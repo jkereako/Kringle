@@ -9,7 +9,8 @@
 import Foundation
 
 public protocol CookieJarType {
-    func cookieDomain(for endpoint: Endpoint) -> String
+    var domain: String { get }
+    
     func setCookies(with httpURLResponse: HTTPURLResponse)
     func setCookie(_ value: String, forName name: String)
     func cookie(forName name: String) -> String?
