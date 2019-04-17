@@ -8,9 +8,10 @@
 
 import XCTest
 @testable import Kringle
+@testable import Promises
 
 final class CookieJarTests: XCTestCase {
-    private var cookieJar: CookieJar!
+    private var cookieJar: CookieJarType!
     private var endpoint: MockEndpoint!
 
     override func setUp() {
@@ -20,6 +21,54 @@ final class CookieJarTests: XCTestCase {
         HTTPCookieStorage.shared.cookies?.forEach {
             HTTPCookieStorage.shared.deleteCookie($0)
         }
+    }
+
+    func testCookieDomainWithTopLevelDomainOnly() {
+        // Arrange
+        enum TestEndpoint: Endpoint {
+            case timCook
+
+            var path: String { return "/" }
+            var baseURL: URL { return URL(string: "https://apple.com/1.0")! }
+        }
+
+        // Act
+        let domain = cookieJar.cookieDomain(for: TestEndpoint.timCook)
+
+        // Assert
+        XCTAssertEqual(".apple.com", domain)
+    }
+
+    func testCookieDomainWithSubdomain() {
+        // Arrange
+        enum TestEndpoint: Endpoint {
+            case timCook
+
+            var path: String { return "/" }
+            var baseURL: URL { return URL(string: "https://api.apple.com/1.0")! }
+        }
+
+        // Act
+        let domain = cookieJar.cookieDomain(for: TestEndpoint.timCook)
+
+        // Assert
+        XCTAssertEqual(".apple.com", domain)
+    }
+
+    func testCookieDomainWithTwoSubdomains() {
+        // Arrange
+        enum TestEndpoint: Endpoint {
+            case timCook
+
+            var path: String { return "/" }
+            var baseURL: URL { return URL(string: "https://www.api.apple.com/1.0")! }
+        }
+
+        // Act
+        let domain = cookieJar.cookieDomain(for: TestEndpoint.timCook)
+
+        // Assert
+        XCTAssertEqual(".apple.com", domain)
     }
 
     func testSetCookie() {
@@ -129,16 +178,16 @@ final class CookieJarTests: XCTestCase {
         urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value); Expires=Sun, 21 Apr 2019 14:22:11"]
 
         // Act
-        networkClient.get(endpoint: endpoint).then { [unowned self] _ in
+        let promise = networkClient.get(endpoint: endpoint).then {() -> String in
             let cookie = self.cookieJar.cookie(forName: name)
-
-            // Assert
-            XCTAssertEqual(1, HTTPCookieStorage.shared.cookies!.count)
-            XCTAssertEqual(value, cookie)
-
-            }.catch { error in
-                XCTFail("Unexpected behavior: \(error.localizedDescription)")
+            return cookie!
         }
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertEqual(1, HTTPCookieStorage.shared.cookies!.count)
+        XCTAssertEqual(promise.value, value)
+        XCTAssertNil(promise.error)
     }
     
     func testExpiredSetCookiesHeaderDeletesCookies() {
@@ -148,19 +197,17 @@ final class CookieJarTests: XCTestCase {
         let urlSession = MockURLSession()
         let networkClient = NetworkClient(urlSession: urlSession)
         urlSession.mockStatusCode = 200
-        urlSession.mockHeaders = ["Set-Cookie": "\(name); Expires=Mon, 15 Apr 2019 14:22:11"]
+        urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value); Expires=Mon, 15 Apr 2019 14:22:11"]
         
         setCookie(name: name, value: value)
         
         // Act
-        networkClient.get(endpoint: endpoint).then { [unowned self] _ in
-            // Assert
-            print(HTTPCookieStorage.shared.cookies!)
-            XCTAssertEqual(0, HTTPCookieStorage.shared.cookies!.count)
-            
-            }.catch { error in
-                XCTFail("Unexpected behavior: \(error.localizedDescription)")
-        }
+        let promise = networkClient.get(endpoint: endpoint)
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertEqual(0, HTTPCookieStorage.shared.cookies!.count)
+        XCTAssertNil(promise.error)
     }
 }
 

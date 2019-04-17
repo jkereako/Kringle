@@ -14,6 +14,19 @@ final public class CookieJar: CookieJarType {
     public init(endpoint: Endpoint) {
         self.endpoint = endpoint
     }
+
+    public func cookieDomain(for endpoint: Endpoint) -> String {
+        let host = endpoint.baseURL.host!
+        let components = host.components(separatedBy: ".")
+
+        var domainComponents = components
+
+        if components.count >= 2 {
+            domainComponents = Array(components.dropFirst(components.count - 2))
+        }
+
+        return ".\(domainComponents.joined(separator: "."))"
+    }
     
     public func setCookies(with httpURLResponse: HTTPURLResponse) {
         guard let headerFields = httpURLResponse.allHeaderFields as? [String: String] else {
@@ -32,14 +45,12 @@ final public class CookieJar: CookieJarType {
     }
     
     public func setCookie(_ value: String, forName name: String) {
-        let host = endpoint.baseURL.host!
         let cookieProperties: [HTTPCookiePropertyKey : Any]
-        let domain = "." + host.components(separatedBy: ".").dropFirst().joined(separator: ".")
-        
+
         cookieProperties = [.name: name,
                             .value: value,
                             .path: "/",
-                            .domain: domain]
+                            .domain: cookieDomain(for: endpoint)]
         
         let cookie = HTTPCookie(properties: cookieProperties)!
         

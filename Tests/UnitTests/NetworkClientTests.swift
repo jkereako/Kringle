@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import Kringle
+@testable import Promises
 
 final class NetworkClientTests: XCTestCase {
     private var networkClient: NetworkClientType!
@@ -30,12 +31,12 @@ final class NetworkClientTests: XCTestCase {
         networkClient = NetworkClient(urlSession: urlSession)
 
         // Act
-        networkClient.get(endpoint: endpoint).then { [unowned self] _ in
-            // Assert
-            self.assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
-            }.catch { error in
-                XCTFail("Unexpected behavior: \(error.localizedDescription)")
-        }
+        let promise = networkClient.get(endpoint: endpoint)
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
+        XCTAssertNil(promise.error)
     }
 
     func testSuccessfulGetRequestWithResponse() {
@@ -44,20 +45,30 @@ final class NetworkClientTests: XCTestCase {
             title: "Apple", messages: ["hi", "lo", "open", "close"]
         )
 
-        coder.encode(contract).then { [unowned self] data in
-            self.urlSession.mockData = data
-            self.urlSession.mockStatusCode = 200
-            self.networkClient = NetworkClient(urlSession: self.urlSession)
-            
-            // Act
-            self.networkClient.get(endpoint: self.endpoint, contract: MockContract.self).then { [unowned self] result in
-                // Assert
-                self.assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
+        // Act
+        let coderPromise = coder.encode(contract)
 
-                XCTAssertEqual(contract.title, result.title)
-                XCTAssertEqual(contract.messages, result.messages)
-            }
-        }
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNotNil(coderPromise.value)
+        XCTAssertNil(coderPromise.error)
+
+        // Arrange
+        self.urlSession.mockData = coderPromise.value!
+        self.urlSession.mockStatusCode = 200
+        self.networkClient = NetworkClient(urlSession: self.urlSession)
+
+        // Act
+        let networkPromise = networkClient.get(endpoint: self.endpoint, contract: MockContract.self)
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNotNil(networkPromise.value)
+        XCTAssertNil(networkPromise.error)
+        XCTAssertEqual(contract.title, networkPromise.value!.title)
+        XCTAssertEqual(contract.messages, networkPromise.value!.messages)
+
+        assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
     }
 
     func testUnsuccessfulGetRequest() {
@@ -66,29 +77,30 @@ final class NetworkClientTests: XCTestCase {
         networkClient = NetworkClient(urlSession: urlSession)
 
         // Act
-        networkClient.get(endpoint: endpoint).then {_ in
-            // Assert
-            XCTFail("Unexpected behavior")
-            }.catch { [unowned self] error in
-                self.assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
+        let promise = networkClient.get(endpoint: endpoint)
 
-                XCTAssertTrue(error is NetworkError)
-        }
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNotNil(promise.error)
+        XCTAssertNil(promise.value)
+        XCTAssertTrue(promise.error! is NetworkError)
+        assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
     }
 
     func testSuccessfulPutRequest() {
         // Arrange
         let body = "Treats of the place Where Oliver Twist was born".data(using: .utf8)!
+        
         urlSession.mockStatusCode = 200
         networkClient = NetworkClient(urlSession: urlSession)
 
         // Act
-        networkClient.put(endpoint: endpoint, body: body).then { [unowned self] _ in
-            // Assert
-            self.assertUrlRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
-            }.catch { error in
-                XCTFail("Unexpected behavior: \(error.localizedDescription)")
-        }
+        let promise = networkClient.put(endpoint: endpoint, body: body)
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNil(promise.error)
+        assertUrlRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
     }
 
     func testSuccessfulPutRequestWithResponse() {
@@ -97,20 +109,29 @@ final class NetworkClientTests: XCTestCase {
             title: "Apple", messages: ["hi", "lo", "open", "close"]
         )
         let body = "Treats of the place Where Oliver Twist was born".data(using: .utf8)!
-        coder.encode(contract).then { [unowned self] data in
-            self.urlSession.mockData = data
-            self.urlSession.mockStatusCode = 200
-            self.networkClient = NetworkClient(urlSession: self.urlSession)
+        let coderPromise = coder.encode(contract)
 
-            // Act
-            self.networkClient.put(endpoint: self.endpoint, body: body, contract: MockContract.self).then { [unowned self] result in
-                // Assert
-                self.assertUrlRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNil(coderPromise.error)
 
-                XCTAssertEqual(contract.title, result.title)
-                XCTAssertEqual(contract.messages, result.messages)
-            }
-        }
+        // Arrange
+        urlSession.mockData = coderPromise.value!
+        urlSession.mockStatusCode = 200
+        networkClient = NetworkClient(urlSession: self.urlSession)
+
+        // Act
+        let networkPromise = networkClient.put(
+            endpoint: self.endpoint, body: body, contract: MockContract.self
+        )
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNotNil(networkPromise.value)
+        XCTAssertNil(networkPromise.error)
+        XCTAssertEqual(contract.title, networkPromise.value!.title)
+        XCTAssertEqual(contract.messages, networkPromise.value!.messages)
+        assertUrlRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
     }
 }
 
