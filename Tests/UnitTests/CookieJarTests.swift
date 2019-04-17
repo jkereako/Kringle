@@ -166,28 +166,28 @@ final class CookieJarTests: XCTestCase {
         XCTAssertEqual(0, HTTPCookieStorage.shared.cookies!.count)
     }
 
-
     func testSetCookiesHeaderStoresCookie() {
         // Arrange
         let name = "tl"
         let value = "tyrion_lanister"
         let urlSession = MockURLSession()
         let networkClient = NetworkClient(urlSession: urlSession)
+        let threeDaysInFuture = Calendar.current.date(byAdding: .day, value: 3, to: Date())!
 
         urlSession.mockStatusCode = 200
-        urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value); Expires=Sun, 21 Apr 2019 14:22:11"]
+        urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value); Expires=\(threeDaysInFuture)"]
 
         // Act
-        let promise = networkClient.get(endpoint: endpoint).then {() -> String in
-            let cookie = self.cookieJar.cookie(forName: name)
-            return cookie!
-        }
+        let promise = networkClient.get(endpoint: endpoint)
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
-        XCTAssertEqual(1, HTTPCookieStorage.shared.cookies!.count)
-        XCTAssertEqual(promise.value, value)
         XCTAssertNil(promise.error)
+        XCTAssertEqual(1, HTTPCookieStorage.shared.cookies!.count)
+
+        let cookie = HTTPCookieStorage.shared.cookies!.first { $0.name == name }!
+
+        XCTAssertEqual(cookie.value, value)
     }
     
     func testExpiredSetCookiesHeaderDeletesCookies() {
@@ -196,8 +196,10 @@ final class CookieJarTests: XCTestCase {
         let value = "tyrion_lanister"
         let urlSession = MockURLSession()
         let networkClient = NetworkClient(urlSession: urlSession)
+        let threeDaysInPast = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
+
         urlSession.mockStatusCode = 200
-        urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value); Expires=Mon, 15 Apr 2019 14:22:11"]
+        urlSession.mockHeaders = ["Set-Cookie": "\(name); Expires=\(threeDaysInPast)"]
         
         setCookie(name: name, value: value)
         
