@@ -1,5 +1,5 @@
 //
-//  MockEndpoint.swift
+//  FakeEndpoint.swift
 //  KringleTests
 //
 //  Created by Jeff Kereakoglow on 4/14/19.
@@ -8,13 +8,13 @@
 import Foundation
 @testable import Kringle
 
-enum MockEndpoint {
+enum FakeEndpoint {
     case symbols
     case company(companyName: String)
     case financials(companyName: String)
 }
 
-extension MockEndpoint: Endpoint {
+extension FakeEndpoint: Endpoint {
     var baseURL: URL { return URL(string: "https://api.iextrading.com/1.0")! }
     var path: String {
         switch self {
@@ -28,6 +28,6 @@ extension MockEndpoint: Endpoint {
     }
 }
 
-extension MockEndpoint {
+extension FakeEndpoint {
     var domain: String { return ".iextrading.com" }
 }

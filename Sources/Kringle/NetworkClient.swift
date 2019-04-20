@@ -9,12 +9,12 @@ import Foundation
 import Promises
 
 final public class NetworkClient: NetworkClientType {
-    fileprivate let urlSession: URLSessionType
+    fileprivate let urlSession: URLSession
     fileprivate let headers: [String: String]
     fileprivate let coder: Coder
     
     // Allow for dependency injection to make the class testable
-    init(urlSession: URLSessionType = URLSession(configuration: URLSessionConfiguration.default)) {
+    init(urlSession: URLSession = URLSession(configuration: .default)) {
         self.urlSession = urlSession
         self.headers = [:]
         self.coder = Coder()
@@ -133,7 +133,7 @@ private extension NetworkClient {
         setheaders(for: request)
         
         return Promise<Data?> { fulfill, reject in
-            let task = self.urlSession.task(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in
+            let task = self.urlSession.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in
                 
                 guard let httpResponse = response as? HTTPURLResponse else {
                     reject(NetworkError.emptyResponse)

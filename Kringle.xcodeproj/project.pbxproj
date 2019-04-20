@@ -24,21 +24,19 @@
 		36FF6E0E2266662200D59202 /* CookieJarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FF6E0D2266662200D59202 /* CookieJarType.swift */; };
 		625D7DA92263D888009D2887 /* CookieJarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D7DA82263D888009D2887 /* CookieJarTests.swift */; };
 		62A0D82522636F6000AE5CF4 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */; };
-		62A0D82D226374B600AE5CF4 /* MockEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82B226374B200AE5CF4 /* MockEndpoint.swift */; };
+		62A0D82D226374B600AE5CF4 /* FakeEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82B226374B200AE5CF4 /* FakeEndpoint.swift */; };
 		62A0D85022638DA400AE5CF4 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84422638DA400AE5CF4 /* NetworkClient.swift */; };
-		62A0D85122638DA400AE5CF4 /* URLSession+URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84622638DA400AE5CF4 /* URLSession+URLSessionType.swift */; };
 		62A0D85222638DA400AE5CF4 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */; };
 		62A0D85322638DA400AE5CF4 /* Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84822638DA400AE5CF4 /* Coder.swift */; };
 		62A0D85422638DA400AE5CF4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84922638DA400AE5CF4 /* NetworkError.swift */; };
-		62A0D85622638DA400AE5CF4 /* URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84C22638DA400AE5CF4 /* URLSessionType.swift */; };
 		62A0D85722638DA400AE5CF4 /* CoderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84D22638DA400AE5CF4 /* CoderType.swift */; };
 		62A0D85822638DA400AE5CF4 /* NetworkClientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */; };
 		62A0D85922638DA400AE5CF4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D84F22638DA400AE5CF4 /* Endpoint.swift */; };
 		62A0D85A22638E5C00AE5CF4 /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D83922638D8400AE5CF4 /* NetworkClientTests.swift */; };
 		62A0D85B22638E5C00AE5CF4 /* CoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D83A22638D8400AE5CF4 /* CoderTests.swift */; };
 		62A0D85C22638E5C00AE5CF4 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D83B22638D8400AE5CF4 /* XCTestManifests.swift */; };
-		62A0D85F22638E6200AE5CF4 /* MockContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82E22637D9300AE5CF4 /* MockContract.swift */; };
-		62A0D86022638E6200AE5CF4 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D834226387FD00AE5CF4 /* MockURLSessionDataTask.swift */; };
+		62A0D85F22638E6200AE5CF4 /* Contract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82E22637D9300AE5CF4 /* Contract.swift */; };
+		62A0D86022638E6200AE5CF4 /* FakeURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D834226387FD00AE5CF4 /* FakeURLSessionDataTask.swift */; };
 		62A0D86522639EFD00AE5CF4 /* CookieJar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D86222639CA200AE5CF4 /* CookieJar.swift */; };
 		OBJ_100 /* FBLPromise+Delay.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* FBLPromise+Delay.m */; };
 		OBJ_101 /* FBLPromise+Do.m in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* FBLPromise+Do.m */; };
@@ -144,18 +142,16 @@
 		36FF6E0D2266662200D59202 /* CookieJarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJarType.swift; sourceTree = "<group>"; };
 		625D7DA82263D888009D2887 /* CookieJarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJarTests.swift; sourceTree = "<group>"; };
 		62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
-		62A0D82B226374B200AE5CF4 /* MockEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEndpoint.swift; sourceTree = "<group>"; };
-		62A0D82E22637D9300AE5CF4 /* MockContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContract.swift; sourceTree = "<group>"; };
-		62A0D834226387FD00AE5CF4 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		62A0D82B226374B200AE5CF4 /* FakeEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEndpoint.swift; sourceTree = "<group>"; };
+		62A0D82E22637D9300AE5CF4 /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
+		62A0D834226387FD00AE5CF4 /* FakeURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeURLSessionDataTask.swift; sourceTree = "<group>"; };
 		62A0D83922638D8400AE5CF4 /* NetworkClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
 		62A0D83A22638D8400AE5CF4 /* CoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoderTests.swift; sourceTree = "<group>"; };
 		62A0D83B22638D8400AE5CF4 /* XCTestManifests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		62A0D84422638DA400AE5CF4 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		62A0D84622638DA400AE5CF4 /* URLSession+URLSessionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+URLSessionType.swift"; sourceTree = "<group>"; };
 		62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		62A0D84822638DA400AE5CF4 /* Coder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coder.swift; sourceTree = "<group>"; };
 		62A0D84922638DA400AE5CF4 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		62A0D84C22638DA400AE5CF4 /* URLSessionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionType.swift; sourceTree = "<group>"; };
 		62A0D84D22638DA400AE5CF4 /* CoderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoderType.swift; sourceTree = "<group>"; };
 		62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClientType.swift; sourceTree = "<group>"; };
 		62A0D84F22638DA400AE5CF4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -270,9 +266,9 @@
 			isa = PBXGroup;
 			children = (
 				62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */,
-				62A0D82B226374B200AE5CF4 /* MockEndpoint.swift */,
-				62A0D82E22637D9300AE5CF4 /* MockContract.swift */,
-				62A0D834226387FD00AE5CF4 /* MockURLSessionDataTask.swift */,
+				62A0D82B226374B200AE5CF4 /* FakeEndpoint.swift */,
+				62A0D82E22637D9300AE5CF4 /* Contract.swift */,
+				62A0D834226387FD00AE5CF4 /* FakeURLSessionDataTask.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -308,7 +304,6 @@
 		62A0D84322638DA400AE5CF4 /* Kringle */ = {
 			isa = PBXGroup;
 			children = (
-				62A0D84522638DA400AE5CF4 /* Extensions */,
 				62A0D84B22638DA400AE5CF4 /* Protocols */,
 				62A0D84422638DA400AE5CF4 /* NetworkClient.swift */,
 				62A0D84722638DA400AE5CF4 /* HTTPMethod.swift */,
@@ -320,18 +315,9 @@
 			path = Kringle;
 			sourceTree = "<group>";
 		};
-		62A0D84522638DA400AE5CF4 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				62A0D84622638DA400AE5CF4 /* URLSession+URLSessionType.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		62A0D84B22638DA400AE5CF4 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				62A0D84C22638DA400AE5CF4 /* URLSessionType.swift */,
 				62A0D84D22638DA400AE5CF4 /* CoderType.swift */,
 				62A0D84E22638DA400AE5CF4 /* NetworkClientType.swift */,
 				36FF6E0D2266662200D59202 /* CookieJarType.swift */,
@@ -627,7 +613,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				62A0D85622638DA400AE5CF4 /* URLSessionType.swift in Sources */,
 				62A0D85922638DA400AE5CF4 /* Endpoint.swift in Sources */,
 				62A0D85022638DA400AE5CF4 /* NetworkClient.swift in Sources */,
 				62A0D85322638DA400AE5CF4 /* Coder.swift in Sources */,
@@ -636,7 +621,6 @@
 				36FF6E0E2266662200D59202 /* CookieJarType.swift in Sources */,
 				62A0D85422638DA400AE5CF4 /* NetworkError.swift in Sources */,
 				62A0D85222638DA400AE5CF4 /* HTTPMethod.swift in Sources */,
-				62A0D85122638DA400AE5CF4 /* URLSession+URLSessionType.swift in Sources */,
 				62A0D86522639EFD00AE5CF4 /* CookieJar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,11 +640,11 @@
 				62A0D85C22638E5C00AE5CF4 /* XCTestManifests.swift in Sources */,
 				625D7DA92263D888009D2887 /* CookieJarTests.swift in Sources */,
 				62A0D82522636F6000AE5CF4 /* MockURLSession.swift in Sources */,
-				62A0D82D226374B600AE5CF4 /* MockEndpoint.swift in Sources */,
+				62A0D82D226374B600AE5CF4 /* FakeEndpoint.swift in Sources */,
 				62A0D85A22638E5C00AE5CF4 /* NetworkClientTests.swift in Sources */,
 				62A0D85B22638E5C00AE5CF4 /* CoderTests.swift in Sources */,
-				62A0D85F22638E6200AE5CF4 /* MockContract.swift in Sources */,
-				62A0D86022638E6200AE5CF4 /* MockURLSessionDataTask.swift in Sources */,
+				62A0D85F22638E6200AE5CF4 /* Contract.swift in Sources */,
+				62A0D86022638E6200AE5CF4 /* FakeURLSessionDataTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

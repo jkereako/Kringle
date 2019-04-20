@@ -8,7 +8,7 @@
 import Foundation
 @testable import Kringle
 
-final class MockURLSession: URLSessionType {
+final class MockURLSession: URLSession {
     var mockData: Data?
     var mockError: Error?
     var mockStatusCode: Int = 200
@@ -18,23 +18,21 @@ final class MockURLSession: URLSessionType {
     private (set) var url: URL!
     private (set) var body: Data!
 
-    func task(with request: URLRequest,
-              completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void)
-        -> URLSessionDataTask {
+    override func dataTask(with request: URLRequest,
+                           completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        httpMethod = request.httpMethod!
+        url = request.url!
+        body = request.httpBody
 
-            httpMethod = request.httpMethod!
-            url = request.url!
-            body = request.httpBody
+        let urlResponse = HTTPURLResponse(
+            url: url,
+            statusCode: mockStatusCode,
+            httpVersion: "2",
+            headerFields: mockHeaders
+        )
 
-            let urlResponse = HTTPURLResponse(
-                url: url,
-                statusCode: mockStatusCode,
-                httpVersion: "2",
-                headerFields: mockHeaders
-            )
-            
-            completionHandler(mockData, urlResponse, mockError)
-            
-            return MockURLSessionDataTask()
+        completionHandler(mockData, urlResponse, mockError)
+
+        return FakeURLSessionDataTask()
     }
 }

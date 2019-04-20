@@ -13,12 +13,12 @@ final class NetworkClientTests: XCTestCase {
     private var networkClient: NetworkClientType!
     private var urlSession: MockURLSession!
     private var coder: Coder!
-    private var endpoint: MockEndpoint!
+    private var endpoint: FakeEndpoint!
 
     override func setUp() {
         urlSession = MockURLSession()
         coder = Coder()
-        endpoint = MockEndpoint.company(companyName: "AAPL")
+        endpoint = FakeEndpoint.company(companyName: "AAPL")
     }
 
     override func tearDown() {
@@ -41,7 +41,7 @@ final class NetworkClientTests: XCTestCase {
 
     func testSuccessfulGetRequestWithResponse() {
         // Arrange
-        let contract = MockContract(
+        let contract = Contract(
             title: "Apple", messages: ["hi", "lo", "open", "close"]
         )
 
@@ -59,7 +59,7 @@ final class NetworkClientTests: XCTestCase {
         self.networkClient = NetworkClient(urlSession: self.urlSession)
 
         // Act
-        let networkPromise = networkClient.get(endpoint: self.endpoint, contract: MockContract.self)
+        let networkPromise = networkClient.get(endpoint: self.endpoint, contract: Contract.self)
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
@@ -105,7 +105,7 @@ final class NetworkClientTests: XCTestCase {
 
     func testSuccessfulPutRequestWithResponse() {
         // Arrange
-        let contract = MockContract(
+        let contract = Contract(
             title: "Apple", messages: ["hi", "lo", "open", "close"]
         )
         let body = "Treats of the place Where Oliver Twist was born".data(using: .utf8)!
@@ -122,7 +122,7 @@ final class NetworkClientTests: XCTestCase {
 
         // Act
         let networkPromise = networkClient.put(
-            endpoint: self.endpoint, body: body, contract: MockContract.self
+            endpoint: self.endpoint, body: body, contract: Contract.self
         )
 
         // Assert

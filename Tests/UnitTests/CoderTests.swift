@@ -21,7 +21,7 @@ final class CoderTests: XCTestCase {
         let json = "{\"title\":\"success\",\"messages\":[\"Ibizan\",\"afghan\",\"basset\",\"blood\",\"english\",\"walker\"]}"
         let jsonData = json.data(using: .utf8)!
 
-        _ = coder.decode(jsonData, to: MockContract.self).then { contract in
+        _ = coder.decode(jsonData, to: Contract.self).then { contract in
             XCTAssertEqual(6, contract.messages.count)
             XCTAssertEqual(contract.title, "success")
         }
@@ -31,7 +31,7 @@ final class CoderTests: XCTestCase {
         let json = "{not_valid_json(@*"
         let jsonData = json.data(using: .utf8)!
 
-        _ = coder.decode(jsonData, to: MockContract.self).then { contract in
+        _ = coder.decode(jsonData, to: Contract.self).then { contract in
             XCTFail("Unexpected behavior")
             }.catch { _ in XCTAssertTrue(true) }
     }
@@ -42,7 +42,7 @@ final class CoderTests: XCTestCase {
         let rook = "rook"
         let knight = "knight"
         let king = "king"
-        let contract = MockContract(title: pawn, messages: [rook, knight, king])
+        let contract = Contract(title: pawn, messages: [rook, knight, king])
 
         // Act
         _ = coder.encode(contract).then { data in

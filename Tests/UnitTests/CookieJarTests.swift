@@ -12,10 +12,10 @@ import XCTest
 
 final class CookieJarTests: XCTestCase {
     private var cookieJar: CookieJarType!
-    private var endpoint: MockEndpoint!
+    private var endpoint: FakeEndpoint!
 
     override func setUp() {
-        endpoint = MockEndpoint.company(companyName: "Apple")
+        endpoint = FakeEndpoint.company(companyName: "Apple")
         cookieJar = CookieJar(endpoint: endpoint)
 
         HTTPCookieStorage.shared.cookies?.forEach {
