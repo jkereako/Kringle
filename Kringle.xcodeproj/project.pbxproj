@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		36FF6E0E2266662200D59202 /* CookieJarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FF6E0D2266662200D59202 /* CookieJarType.swift */; };
+		62554FD62287C95A003406C4 /* EndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62554FD52287C95A003406C4 /* EndpointTests.swift */; };
 		625D7DA92263D888009D2887 /* CookieJarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D7DA82263D888009D2887 /* CookieJarTests.swift */; };
 		62A0D82522636F6000AE5CF4 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */; };
 		62A0D82D226374B600AE5CF4 /* FakeEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0D82B226374B200AE5CF4 /* FakeEndpoint.swift */; };
@@ -140,6 +141,7 @@
 
 /* Begin PBXFileReference section */
 		36FF6E0D2266662200D59202 /* CookieJarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJarType.swift; sourceTree = "<group>"; };
+		62554FD52287C95A003406C4 /* EndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTests.swift; sourceTree = "<group>"; };
 		625D7DA82263D888009D2887 /* CookieJarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookieJarTests.swift; sourceTree = "<group>"; };
 		62A0D82322636F5B00AE5CF4 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		62A0D82B226374B200AE5CF4 /* FakeEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeEndpoint.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				62A0D83A22638D8400AE5CF4 /* CoderTests.swift */,
 				62A0D83B22638D8400AE5CF4 /* XCTestManifests.swift */,
 				625D7DA82263D888009D2887 /* CookieJarTests.swift */,
+				62554FD52287C95A003406C4 /* EndpointTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				625D7DA92263D888009D2887 /* CookieJarTests.swift in Sources */,
 				62A0D82522636F6000AE5CF4 /* MockURLSession.swift in Sources */,
 				62A0D82D226374B600AE5CF4 /* FakeEndpoint.swift in Sources */,
+				62554FD62287C95A003406C4 /* EndpointTests.swift in Sources */,
 				62A0D85A22638E5C00AE5CF4 /* NetworkClientTests.swift in Sources */,
 				62A0D85B22638E5C00AE5CF4 /* CoderTests.swift in Sources */,
 				62A0D85F22638E6200AE5CF4 /* Contract.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import Kringle
+@testable import Promises
 
 final class CoderTests: XCTestCase {
     private var coder: CoderType!
@@ -18,25 +19,35 @@ final class CoderTests: XCTestCase {
     }
 
     func testDecoderFulfillsPromiseWhenDecodingValidJSON() {
+        // Arrange
         let json = "{\"title\":\"success\",\"messages\":[\"Ibizan\",\"afghan\",\"basset\",\"blood\",\"english\",\"walker\"]}"
         let jsonData = json.data(using: .utf8)!
 
-        _ = coder.decode(jsonData, to: Contract.self).then { contract in
-            XCTAssertEqual(6, contract.messages.count)
-            XCTAssertEqual(contract.title, "success")
-        }
+        // Act
+        let promise = coder.decode(jsonData, to: Contract.self)
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNil(promise.error)
+        XCTAssertEqual(6, promise.value!.messages.count)
+        XCTAssertEqual(promise.value!.title, "success")
     }
 
     func testDecoderRejectsPromiseWhenDecodingInvalidJSON() {
+        // Arrange
         let json = "{not_valid_json(@*"
         let jsonData = json.data(using: .utf8)!
 
-        _ = coder.decode(jsonData, to: Contract.self).then { contract in
-            XCTFail("Unexpected behavior")
-            }.catch { _ in XCTAssertTrue(true) }
+        // Act
+        let promise = coder.decode(jsonData, to: Contract.self)
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNil(promise.value)
+        XCTAssertNotNil(promise.error)
     }
 
-    func testEncoderFulfillsPromiseWhenEncodingValidJSON() {
+    func testEncoderFulfillsPromise() {
         // Arrange
         let pawn = "pawn"
         let rook = "rook"
@@ -45,16 +56,19 @@ final class CoderTests: XCTestCase {
         let contract = Contract(title: pawn, messages: [rook, knight, king])
 
         // Act
-        _ = coder.encode(contract).then { data in
-            let json = String(data: data, encoding: .utf8)!
+        let promise = coder.encode(contract)
 
-            // Assert
-            XCTAssertTrue(json.contains("title"))
-            XCTAssertTrue(json.contains("messages"))
-            XCTAssertTrue(json.contains(pawn))
-            XCTAssertTrue(json.contains(rook))
-            XCTAssertTrue(json.contains(knight))
-            XCTAssertTrue(json.contains(king))
-        }
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNil(promise.error)
+
+        let json = String(data: promise.value!, encoding: .utf8)!
+
+        XCTAssertTrue(json.contains("title"))
+        XCTAssertTrue(json.contains("messages"))
+        XCTAssertTrue(json.contains(pawn))
+        XCTAssertTrue(json.contains(rook))
+        XCTAssertTrue(json.contains(knight))
+        XCTAssertTrue(json.contains(king))
     }
 }
