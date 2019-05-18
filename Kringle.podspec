@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.source      = { :git => 'https://github.com/jkereako/Kringle.git', :tag => s.version }
   s.summary     = 'Synchronization construct for Swift'
   s.description = <<-DESC
-  Kringle is a lightweight framework that provides a networking layer.
+  Kringle is a small, opinionated networking framework designed with simplicity in mind.
                      DESC
 
   s.ios.deployment_target  = '10.0'
