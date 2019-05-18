@@ -12,8 +12,11 @@ designed with simplicity in mind and is really just a thin abstraction around
    sane way to manage completion handlers and asynchronous behavior in general
  - **JSON deserialization.** JSON is deserialized on a background queue so it
    won't hang your app if your JSON dataset is large
- - **Automatic cookie storage.** Any response that contains the `Set-Cookie`
-   header will automatically store cookies
+ - **Automated cookie management.** Cookies will be stored for any response 
+   that contains the `Set-Cookie` header with an expiration date in the future
+   or without one at all. Likewise, cookies will be deleted for any response
+   that contains the `Set-Cookie` with an expiration date in the past (see 
+   [RFC-6265])
 
 # Design
 So I said this is an opinionated framework. The interface to this
@@ -75,4 +78,5 @@ install all dependencies.
 [Alamofire]: https://github.com/Alamofire/Alamofire
 [URLSession]: https://developer.apple.com/documentation/foundation/urlsession
 [Promises]: https://github.com/google/promises
+[RFC-6265]: https://tools.ietf.org/html/rfc6265#section-4.1.2
 [Decodable]: https://developer.apple.com/documentation/swift/decodable
