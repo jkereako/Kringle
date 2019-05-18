@@ -60,7 +60,7 @@ networkClient = NetworkClient()
 
 // This performs a GET request on https://api.kringlekitty.com/pet/Kringle
 networkClient.get(endpoint: cat).then {_ in
-  print(":catemoji:")
+  print("🐱")
   }.catch { error in
     print("You gotta be kitten me!")
 }
