@@ -23,7 +23,7 @@ method name coresponds to a HTTP method name. Thus far, only `delete`, `get`,
 no one actually uses them even if they say they do.
 
 These methods accept an Endpoint type and return a `Promise<void>` if no response
-is expected from the endpoint, or a `Promise<T>` where T is a Decodable. Promises
+is expected from the endpoint, or a `Promise<T>` where T is a [Decodable]. Promises
 were added purely to improve developer experience.
 
 The Endpoint type is an enum. This was inspired by a [Chris Eidhof][Eidhof] post
@@ -75,3 +75,4 @@ install all dependencies.
 [Alamofire]: https://github.com/Alamofire/Alamofire
 [URLSession]: https://developer.apple.com/documentation/foundation/urlsession
 [Promises]: https://github.com/google/promises
+[Decodable]: https://developer.apple.com/documentation/swift/decodable
