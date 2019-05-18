@@ -10,7 +10,7 @@ let package = Package(
             targets: ["Kringle"]),
     ],
     dependencies: [
-       .package(url: "https://github.com/google/promises.git", from: "1.2.7")
+       .package(url: "https://github.com/google/promises.git", from: "1.2.8")
     ],
     targets: [
         .target(

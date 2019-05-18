@@ -17,6 +17,7 @@ final class NetworkClientTests: XCTestCase {
 
     override func setUp() {
         urlSession = MockURLSession()
+        
         coder = Coder()
         endpoint = FakeEndpoint.company(companyName: "AAPL")
     }
