@@ -37,7 +37,7 @@ enum CatEndpoint {
 }
 
 extension CatEndpoint: Endpoint {
-    var baseURL: URL { return URL(string: “https://api.kringlekitty.com")! }
+    var baseURL: URL { return URL(string: "https://api.kringlekitty.com")! }
     var path: String {
         switch self {
         case .cuddle:
