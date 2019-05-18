@@ -66,6 +66,11 @@ networkClient.get(endpoint: cat).then {_ in
 }
 ```
 
+# Development
+This framework was created with Swift Package Manager and. The easiest 
+way to get started after cloning the repository is to run `swift build` to 
+install all dependencies.
+
 [Eidhof]: http://chris.eidhof.nl/post/typesafe-url-routes-in-swift/
 [Alamofire]: https://github.com/Alamofire/Alamofire
 [URLSession]: https://developer.apple.com/documentation/foundation/urlsession
