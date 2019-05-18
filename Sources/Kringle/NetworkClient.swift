@@ -10,13 +10,17 @@ import Promises
 
 final public class NetworkClient: NetworkClientType {
     fileprivate let urlSession: URLSession
-    fileprivate let headers: [String: String]
     fileprivate let coder: Coder
     
     // Allow for dependency injection to make the class testable
     init(urlSession: URLSession = URLSession(configuration: .default)) {
+        urlSession.configuration.httpAdditionalHeaders = [
+            "Accept": "application/json",
+            "Accept-Charset": "UTF-8",
+            "Accept-Encoding": "gzip"
+        ]
+
         self.urlSession = urlSession
-        self.headers = [:]
         self.coder = Coder()
     }
     
@@ -93,23 +97,13 @@ private extension NetworkClient {
             return self.coder.decode(responseData, to: T.self)
         }
     }
-    
-    func setheaders(for request: NSMutableURLRequest) {
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("UTF-8", forHTTPHeaderField: "Accept-Charset")
-        request.setValue("gzip", forHTTPHeaderField: "Accept-Encoding")
-        
-        headers.forEach { request.setValue($1, forHTTPHeaderField: $0) }
-    }
-    
+
     func sendRequestToEndpoint(_ endpoint: Endpoint, httpMethod: HTTPMethod, body: Data? = nil) -> Promise<Data?> {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
         let request = NSMutableURLRequest(url: url)
         
         request.httpMethod = httpMethod.rawValue
         request.httpBody = body
-        
-        setheaders(for: request)
         
         return Promise<Data?> { fulfill, reject in
             let task = self.urlSession.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in
