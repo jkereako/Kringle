@@ -28,8 +28,6 @@ final public class CookieJar: CookieJarType {
         self.endpoint = endpoint
     }
     
-    
-    
     public func setCookies(with httpURLResponse: HTTPURLResponse) {
         guard let headerFields = httpURLResponse.allHeaderFields as? [String: String] else {
             return
