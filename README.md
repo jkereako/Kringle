@@ -8,9 +8,9 @@ designed with simplicity in mind and is really just a thin abstraction around
 [URLSession].
 
 # Features
- - **Promises.** Uses [Google's Promises][Promises] framework to provides a sane
-   way to manage completion handlers and asynchronous behavior in general
- - **JSON deserialization.** JSON is deserialized on a background queue so it 
+ - **Promises.** Uses [Google's Promises][Promises] framework to provides a 
+   sane way to manage completion handlers and asynchronous behavior in general
+ - **JSON deserialization.** JSON is deserialized on a background queue so it
    won't hang your app if your JSON dataset is large
  - **Automatic cookie storage.** Any response that contains the `Set-Cookie`
    header will automatically store cookies
@@ -59,7 +59,7 @@ let cat = CatEndpoint.pet(catName: "Kringle")
 networkClient = NetworkClient()
 
 // This performs a GET request on https://api.kringlekitty.com/pet/Kringle
-networkClient.get(endpoint: cat).then {_ in
+networkClient.get(cat).then {_ in
   print("🐱")
   }.catch { error in
     print("You gotta be kitten me!")
@@ -67,8 +67,8 @@ networkClient.get(endpoint: cat).then {_ in
 ```
 
 # Development
-This framework was created with Swift Package Manager and. The easiest 
-way to get started after cloning the repository is to run `swift build` to 
+This framework was created with Swift Package Manager. The easiest 
+way to get started after cloning the repository is to run `swift build` to
 install all dependencies.
 
 [Eidhof]: http://chris.eidhof.nl/post/typesafe-url-routes-in-swift/
