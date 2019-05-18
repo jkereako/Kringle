@@ -22,8 +22,8 @@ method name coresponds to a HTTP method name. Thus far, only `delete`, `get`,
 `post` and `put` are supported. I left out the other ones, like `patch`, because
 no one actually uses them even if they say they do.
 
-These methods accept an Endpoint type and return a Promise<void> if no response
-is expected from the endpoint, or a Promise<T> where T is a Decodable. Promises
+These methods accept an Endpoint type and return a `Promise<void>` if no response
+is expected from the endpoint, or a `Promise<T>` where T is a Decodable. Promises
 were added purely to improve developer experience.
 
 The Endpoint type is an enum. This was inspired by a [Chris Eidhof][Eidhof] post
