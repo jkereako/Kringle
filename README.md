@@ -16,7 +16,7 @@ designed with simplicity in mind and is really just a thin abstraction around
    that contains the `Set-Cookie` header with an expiration date in the future
    or without one at all. Likewise, cookies will be deleted for any response
    that contains the `Set-Cookie` with an expiration date in the past (see 
-   [RFC-6265])
+   [RFC-6265 section 4.1.2][RFC-6265])
 
 # Design
 So I said this is an opinionated framework. The interface to this
