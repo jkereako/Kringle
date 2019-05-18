@@ -31,7 +31,7 @@ final class NetworkClientTests: XCTestCase {
         networkClient = NetworkClient(urlSession: urlSession)
 
         // Act
-        let promise = networkClient.get(endpoint: endpoint)
+        let promise = networkClient.get(endpoint)
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
@@ -59,7 +59,7 @@ final class NetworkClientTests: XCTestCase {
         self.networkClient = NetworkClient(urlSession: self.urlSession)
 
         // Act
-        let networkPromise = networkClient.get(endpoint: self.endpoint, contract: Contract.self)
+        let networkPromise = networkClient.get(self.endpoint, decodingResponseTo: Contract.self)
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
@@ -77,7 +77,7 @@ final class NetworkClientTests: XCTestCase {
         networkClient = NetworkClient(urlSession: urlSession)
 
         // Act
-        let promise = networkClient.get(endpoint: endpoint)
+        let promise = networkClient.get(endpoint)
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
@@ -95,7 +95,7 @@ final class NetworkClientTests: XCTestCase {
         networkClient = NetworkClient(urlSession: urlSession)
 
         // Act
-        let promise = networkClient.put(endpoint: endpoint, body: body)
+        let promise = networkClient.put(body, to: endpoint)
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
@@ -122,7 +122,7 @@ final class NetworkClientTests: XCTestCase {
 
         // Act
         let networkPromise = networkClient.put(
-            endpoint: self.endpoint, body: body, contract: Contract.self
+            body, to: self.endpoint, decodingResponseTo: Contract.self
         )
 
         // Assert

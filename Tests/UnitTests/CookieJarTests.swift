@@ -175,7 +175,7 @@ final class CookieJarTests: XCTestCase {
         urlSession.mockHeaders = ["Set-Cookie": "\(name)=\(value); Expires=\(threeDaysInFuture)"]
 
         // Act
-        let promise = networkClient.get(endpoint: endpoint)
+        let promise = networkClient.get(endpoint)
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
@@ -201,7 +201,7 @@ final class CookieJarTests: XCTestCase {
         setCookie(name: name, value: value)
         
         // Act
-        let promise = networkClient.get(endpoint: endpoint)
+        let promise = networkClient.get(endpoint)
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
