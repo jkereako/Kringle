@@ -13,10 +13,14 @@ import XCTest
 final class CookieJarTests: XCTestCase {
     private var cookieJar: CookieJarType!
     private var endpoint: FakeEndpoint!
+    private let rfc1123Formatter = DateFormatter()
 
     override func setUp() {
         endpoint = FakeEndpoint.company(companyName: "Apple")
         cookieJar = CookieJar(endpoint: endpoint)
+        rfc1123Formatter.dateFormat = "EEE',' dd MMM yyyy HH':'mm':'ss z"
+        rfc1123Formatter.locale = Locale(identifier: "en_US_POSIX")
+        rfc1123Formatter.timeZone = TimeZone(secondsFromGMT: 0)
 
         HTTPCookieStorage.shared.cookies?.forEach {
             HTTPCookieStorage.shared.deleteCookie($0)
@@ -196,7 +200,9 @@ final class CookieJarTests: XCTestCase {
         let threeDaysInPast = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
 
         urlSession.mockStatusCode = 200
-        urlSession.mockHeaders = ["Set-Cookie": "\(name); Expires=\(threeDaysInPast)"]
+        urlSession.mockHeaders = [
+            "Set-Cookie": "\(name); Expires=\(rfc1123Formatter.string(from: threeDaysInPast))"
+        ]
         
         setCookie(name: name, value: value)
         
