@@ -59,7 +59,7 @@ let cat = CatEndpoint.pet(catName: "Kringle")
 networkClient = NetworkClient()
 
 // This performs a GET request on https://api.kringlekitty.com/pet/Kringle
-networkClient.get(cat).then {_ in
+networkClient.get(cat).then { _ in
   print("🐱")
   }.catch { error in
     print("You gotta be kitten me!")
