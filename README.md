@@ -10,8 +10,9 @@ designed with simplicity in mind and is really just a thin abstraction around
 # Features
  - **Promises.** Uses [Google's Promises][Promises] framework to provides a 
    sane way to manage completion handlers and asynchronous behavior in general
- - **JSON deserialization.** JSON is deserialized on a background queue so it
-   won't hang your app if your JSON dataset is large
+ - **JSON deserialization.** JSON response data is deserialized into objects
+   which adopt the [Decodable protocol][Decodable] on a background queue. So,
+   your app won't hang if your JSON dataset is large
  - **Automated cookie management.** Cookies will be stored for any response 
    that contains the `Set-Cookie` header with an expiration date in the future
    or without one at all. Likewise, cookies will be deleted for any response
@@ -23,7 +24,7 @@ So I said this is an opinionated framework. The interface to this
 framework is through NetworkClient. This class exposes only eight methods. Each
 method name coresponds to a HTTP method name. Thus far, only `delete`, `get`,
 `post` and `put` are supported. I left out the other ones, like `patch`, because
-no one actually uses them even if they say they do.
+no one actually uses them even if folks say they do.
 
 These methods accept an Endpoint type and return a `Promise<void>` if no response
 is expected from the endpoint, or a `Promise<T>` where T is a [Decodable]. Promises
