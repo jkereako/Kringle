@@ -16,7 +16,8 @@ designed with simplicity in mind and is really just a thin abstraction around
  - *Automatic cookie storage.* Any response that contains the `Set-Cookie`
    header will automatically save cookies
 
-# Design So I said this is an opinionated framework. The interface to this
+# Design
+So I said this is an opinionated framework. The interface to this
 framework is through NetworkClient. This class exposes only eight methods. Each
 method name coresponds to a HTTP method name. Thus far, only `delete`, `get`,
 `post` and `put` are supported. I left out the other ones, like `patch`, because
