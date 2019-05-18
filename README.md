@@ -10,10 +10,10 @@ designed with simplicity in mind and is really just a thin abstraction around
 # Features
  - **Promises.** Uses [Google's Promises][Promises] framework to provides a sane
    way to manage completion handlers and asynchronous behavior in general
- - **JSON deserialization.** JSON is deserialized on a background queue (so it 
-   won't hang your app if your JSON dataset is large) into Decodable objects
+ - **JSON deserialization.** JSON is deserialized on a background queue so it 
+   won't hang your app if your JSON dataset is large
  - **Automatic cookie storage.** Any response that contains the `Set-Cookie`
-   header will automatically save cookies
+   header will automatically store cookies
 
 # Design
 So I said this is an opinionated framework. The interface to this
