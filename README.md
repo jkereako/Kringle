@@ -1,5 +1,4 @@
 # Kringle
-
 Do you really need [Alamofire]? Are you going to use all of those features? Do
 you even know what they do? Do you just want to download some JSON and parse it
 into a contract and be done with it? That is what Kringle is for.
@@ -9,11 +8,11 @@ designed with simplicity in mind and is really just a thin abstraction around
 [URLSession].
 
 # Features
- - *Promises.* Provides a sane way to handle completion handlers and
-   asynchronous behavior in general
- - *JSON deserialization.* JSON is deserialized on a background queue into
-   Decodable objects
- - *Automatic cookie storage.* Any response that contains the `Set-Cookie`
+ - **Promises.** Uses [Google's Promises][Promises] framework to provides a sane
+   way to manage completion handlers and asynchronous behavior in general
+ - **JSON deserialization.** JSON is deserialized on a background queue (so it 
+   won't hang your app if your JSON dataset is large) into Decodable objects
+ - **Automatic cookie storage.** Any response that contains the `Set-Cookie`
    header will automatically save cookies
 
 # Design
