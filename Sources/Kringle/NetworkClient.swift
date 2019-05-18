@@ -30,70 +30,45 @@ final public class NetworkClient: NetworkClientType {
     
     public func get<T: Decodable>(_ endpoint: Endpoint,
                                   decodingResponseTo contract: T.Type) -> Promise<T> {
-        let promise = sendRequestDecodingResponse(
+        return sendRequestDecodingResponse(
             endpoint: endpoint, httpMethod: .get, decodable: contract
         )
-        
-        return promise.then { _ -> Void  in
-            return
-        }
     }
     
     public func put(_ body: Data, to endpoint: Endpoint) -> Promise<Void> {
-        let promise = sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .put, body: body)
-        
-        return promise.then { _ -> Void  in
-            return
-        }
+        return sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .put, body: body)
     }
     
     public func put<T: Decodable>(_ body: Data, to endpoint: Endpoint,
                                   decodingResponseTo contract: T.Type) -> Promise<T> {
-        let promise = sendRequestDecodingResponse(
+
+        return sendRequestDecodingResponse(
             endpoint: endpoint, httpMethod: .put, decodable: contract, body: body
         )
-        
-        return promise.then { _ -> Void  in
-            return
-        }
     }
     
     public func post(_ body: Data, to endpoint: Endpoint) -> Promise<Void> {
-        let promise = sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .post, body: body)
-        
-        return promise.then { _ -> Void  in
-            return
-        }
+        return sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .post, body: body)
     }
     
     public func post<T: Decodable>(_ body: Data, to endpoint: Endpoint,
                                    decodingResponseTo contract: T.Type) -> Promise<T> {
-        let promise = sendRequestDecodingResponse(
+
+        return sendRequestDecodingResponse(
             endpoint: endpoint, httpMethod: .post, decodable: contract, body: body
         )
-        
-        return promise.then { _ -> Void  in
-            return
-        }
     }
     
     public func delete(_ endpoint: Endpoint) -> Promise<Void> {
-        let promise = sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .delete)
-        
-        return promise.then { _ -> Void  in
-            return
-        }
+        return sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .delete)
     }
     
     public func delete<T: Decodable>(_ endpoint: Endpoint,
                                      decodingResponseTo contract: T.Type) -> Promise<T> {
-        let promise = sendRequestDecodingResponse(
+
+        return sendRequestDecodingResponse(
             endpoint: endpoint, httpMethod: .delete, decodable: contract
         )
-        
-        return promise.then { _ -> Void  in
-            return
-        }
     }
 }
 
