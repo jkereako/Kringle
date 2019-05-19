@@ -13,7 +13,7 @@ final public class NetworkClient: NetworkClientType {
     fileprivate let coder: Coder
     
     // Allow for dependency injection to make the class testable
-    init(urlSession: URLSession = URLSession(configuration: .default)) {
+    public init(urlSession: URLSession = URLSession(configuration: .default)) {
         urlSession.configuration.httpAdditionalHeaders = [
             "Accept": "application/json",
             "Accept-Charset": "UTF-8",
