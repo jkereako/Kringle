@@ -9,27 +9,26 @@ import Foundation
 import Promises
 
 final public class NetworkClient: NetworkClientType {
-    fileprivate let urlSession: URLSession
-    fileprivate let coder: Coder
+    public var headers: [String: String]
+
+    private let standardHeaders = [
+        "Accept": "application/json",
+        "Accept-Charset": "UTF-8",
+        "Accept-Encoding": "gzip"
+    ]
+
+    private let urlSession: URLSession
+    private let coder: Coder
     
     // Allow for dependency injection to make the class testable
     public init(urlSession: URLSession = URLSession(configuration: .default)) {
-        urlSession.configuration.httpAdditionalHeaders = [
-            "Accept": "application/json",
-            "Accept-Charset": "UTF-8",
-            "Accept-Encoding": "gzip"
-        ]
-
+        self.headers = [String: String]()
         self.urlSession = urlSession
         self.coder = Coder()
     }
     
     public func get(_ endpoint: Endpoint) -> Promise<Void> {
-        let promise = sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .get)
-        
-        return promise.then { _ -> Void  in
-            return
-        }
+        return sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .get)
     }
     
     public func get<T: Decodable>(_ endpoint: Endpoint,
@@ -78,6 +77,11 @@ final public class NetworkClient: NetworkClientType {
 
 // MARK: - Private helpers
 private extension NetworkClient {
+    func setHeaders(for request: NSMutableURLRequest) {
+        standardHeaders.forEach { request.setValue($1, forHTTPHeaderField: $0) }
+        headers.forEach { request.setValue($1, forHTTPHeaderField: $0) }
+    }
+
     func sendRequestIgnoringResponse(endpoint: Endpoint, httpMethod: HTTPMethod, body: Data? = nil) -> Promise<Void> {
         // Implicitly cast `Promise<Data?>` to `Promise<Void>`
         return sendRequestToEndpoint(endpoint, httpMethod: httpMethod, body: body).then { _ -> Void  in
@@ -104,6 +108,8 @@ private extension NetworkClient {
         
         request.httpMethod = httpMethod.rawValue
         request.httpBody = body
+
+        setHeaders(for: request)
         
         return Promise<Data?> { fulfill, reject in
             let task = self.urlSession.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) in

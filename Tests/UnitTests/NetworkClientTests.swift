@@ -36,7 +36,7 @@ final class NetworkClientTests: XCTestCase {
 
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
-        assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
+        assertURLRequest(endpoint: self.endpoint, httpMethod: .get)
         XCTAssertNil(promise.error)
     }
 
@@ -69,7 +69,7 @@ final class NetworkClientTests: XCTestCase {
         XCTAssertEqual(contract.title, networkPromise.value!.title)
         XCTAssertEqual(contract.messages, networkPromise.value!.messages)
 
-        assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
+        assertURLRequest(endpoint: self.endpoint, httpMethod: .get)
     }
 
     func testUnsuccessfulGetRequest() {
@@ -85,7 +85,7 @@ final class NetworkClientTests: XCTestCase {
         XCTAssertNotNil(promise.error)
         XCTAssertNil(promise.value)
         XCTAssertTrue(promise.error! is NetworkError)
-        assertUrlRequest(endpoint: self.endpoint, httpMethod: .get)
+        assertURLRequest(endpoint: self.endpoint, httpMethod: .get)
     }
 
     func testSuccessfulPutRequest() {
@@ -101,7 +101,7 @@ final class NetworkClientTests: XCTestCase {
         // Assert
         XCTAssert(waitForPromises(timeout: 1))
         XCTAssertNil(promise.error)
-        assertUrlRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
+        assertURLRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
     }
 
     func testSuccessfulPutRequestWithResponse() {
@@ -132,13 +132,32 @@ final class NetworkClientTests: XCTestCase {
         XCTAssertNil(networkPromise.error)
         XCTAssertEqual(contract.title, networkPromise.value!.title)
         XCTAssertEqual(contract.messages, networkPromise.value!.messages)
-        assertUrlRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
+        assertURLRequest(endpoint: self.endpoint, httpMethod: .put, body: body)
+    }
+
+    func testHeadersArePresentInRequest() {
+        // Arrange
+        let headerKey1 = "foo"
+        let headerKey2 = "bar"
+        let headers = [headerKey1: "baz", headerKey2: "boom"]
+        networkClient = NetworkClient(urlSession: urlSession)
+        networkClient.headers = headers
+
+        // Act
+        let promise = networkClient.get(endpoint)
+
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNil(promise.error)
+        XCTAssertNotNil(promise.value)
+        XCTAssertNotNil(urlSession.headers.index(forKey: headerKey1))
+        XCTAssertNotNil(urlSession.headers.index(forKey: headerKey2))
     }
 }
 
 // MARK: - Helpers
 private extension NetworkClientTests {
-    func assertUrlRequest(endpoint: Endpoint, httpMethod: HTTPMethod, body: Data? = nil) {
+    func assertURLRequest(endpoint: Endpoint, httpMethod: HTTPMethod, body: Data? = nil) {
         XCTAssertTrue(urlSession.url.absoluteString.contains(endpoint.baseURL.absoluteString))
         XCTAssertTrue(urlSession.url.absoluteString.contains(endpoint.path))
         XCTAssertEqual(httpMethod.rawValue, self.urlSession.httpMethod)

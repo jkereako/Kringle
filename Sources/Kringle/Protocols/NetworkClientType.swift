@@ -9,6 +9,8 @@ import Foundation
 import Promises
 
 public protocol NetworkClientType {
+    var headers: [String: String] { get set }
+    
     func get(_ endpoint: Endpoint) -> Promise<Void>
     func get<T: Decodable>(_ endpoint: Endpoint, decodingResponseTo contract: T.Type) -> Promise<T>
 
