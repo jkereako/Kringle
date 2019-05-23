@@ -11,7 +11,7 @@ import XCTest
 @testable import Promises
 
 final class CookieJarTests: XCTestCase {
-    private var cookieJar: CookieJarType!
+    private var cookieJar: CookieJar!
     private var endpoint: FakeEndpoint!
     private let rfc1123Formatter = DateFormatter()
 

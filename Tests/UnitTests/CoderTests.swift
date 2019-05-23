@@ -10,7 +10,7 @@ import XCTest
 @testable import Promises
 
 final class CoderTests: XCTestCase {
-    private var coder: CoderType!
+    private var coder: Coder!
 
     override func setUp() {
         super.setUp()
