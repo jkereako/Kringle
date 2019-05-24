@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = 'Kringle'
-  s.version     = '0.0.4'
+  s.version     = '0.0.5'
   s.authors     = 'Jeff Kereakoglow'
   s.license     = { :type => 'MIT', :file => 'LICENSE' }
   s.homepage    = 'https://github.com/jkereako/Kringle'
