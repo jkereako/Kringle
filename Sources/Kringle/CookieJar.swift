@@ -118,30 +118,33 @@ private extension CookieJar {
         var expiredCookies = [String]()
         
         for headerField in headerFields {
-            if normalized(headerField.key) == "set-cookie" {
-                let headerFieldValues = headerField.value.split(separator: ";")
-                
-                if headerFieldValues.count < 1 {
-                    return nil
-                }
-                
-                let values = headerFieldValues.map { String($0) }
-                let cookieName = values.first ?? ""
-                
-                for value in values {
-                    if normalized(value).contains("expires") {
-                        let expiration = String(value.split(separator: "=").last ?? "")
-                        
-                        guard let expirationDate = rfc1123DateFormatter.date(from: expiration) else {
-                            continue
-                        }
-                        
-                        if today.compare(expirationDate) == .orderedDescending {
-                            expiredCookies.append(cookieName)
-                        }
+            guard normalized(headerField.key) == "set-cookie" else {
+                continue
+            }
+
+            let headerFieldValues = headerField.value.split(separator: ";")
+
+            guard headerFieldValues.count > 0 else {
+                return nil
+            }
+
+            let values = headerFieldValues.map { String($0) }
+            let cookieName = values.first ?? ""
+
+            for value in values {
+                if normalized(value).contains("expires") {
+                    let expiration = String(value.split(separator: "=").last ?? "")
+
+                    guard let expirationDate = rfc1123DateFormatter.date(from: expiration) else {
+                        continue
+                    }
+
+                    if today.compare(expirationDate) == .orderedDescending {
+                        expiredCookies.append(cookieName)
                     }
                 }
             }
+
         }
         
         return expiredCookies.count == 0 ? nil : expiredCookies
