@@ -9,5 +9,6 @@ import Foundation
 
 struct Contract: Codable {
     let title: String
+    let date: Date
     let messages: [String]
 }

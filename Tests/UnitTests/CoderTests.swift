@@ -15,13 +15,17 @@ final class CoderTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        coder = Coder()
+        coder = Coder(encoder: JSONEncoder(), decoder: JSONDecoder())
     }
 
     func testDecoderFulfillsPromiseWhenDecodingValidJSON() {
         // Arrange
-        let json = "{\"title\":\"success\",\"messages\":[\"Ibizan\",\"afghan\",\"basset\",\"blood\",\"english\",\"walker\"]}"
-        let jsonData = json.data(using: .utf8)!
+        let response: [String : Any] = [
+             "title": "success",
+             "date": Date().timeIntervalSince1970,
+             "messages": ["Ibizan", "Afghan", "Basset", "Blood", "English", "Walker"]
+         ]
+        let jsonData = try! JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
 
         // Act
         let promise = coder.decode(jsonData, to: Contract.self)
@@ -53,7 +57,7 @@ final class CoderTests: XCTestCase {
         let rook = "rook"
         let knight = "knight"
         let king = "king"
-        let contract = Contract(title: pawn, messages: [rook, knight, king])
+        let contract = Contract(title: pawn, date: Date(), messages: [rook, knight, king])
 
         // Act
         let promise = coder.encode(contract)

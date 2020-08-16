@@ -11,15 +11,15 @@ import Promises
 // JSONEncoder and JSONDecoder perform their respective work on the the UI thread by default. As
 // such, we indicate to the Promise that we want this work to occur on a background thread.
 public final class Coder {
-
+    private(set) var encoder: JSONEncoder
+    private(set) var decoder: JSONDecoder
+    
     /// The dispatch queue for the background thread.
     private let dispatchQueue = DispatchQueue(label: "JSONCoderQueue")
-    private let encoder: JSONEncoder
-    private let decoder: JSONDecoder
-
-    public init() {
-        encoder = JSONEncoder()
-        decoder = JSONDecoder()
+    
+    public init(encoder: JSONEncoder, decoder: JSONDecoder ) {
+        self.encoder = encoder
+        self.decoder = decoder
     }
 
     /// Asynchronously encodes a contract to JSON data.

@@ -18,7 +18,7 @@ final class NetworkClientTests: XCTestCase {
     override func setUp() {
         urlSession = MockURLSession()
         
-        coder = Coder()
+        coder = Coder(encoder: JSONEncoder(), decoder: JSONDecoder())
         endpoint = FakeEndpoint.company(companyName: "AAPL")
     }
     
@@ -63,7 +63,7 @@ final class NetworkClientTests: XCTestCase {
     func testSuccessfulGetRequestWithResponse() {
         // Arrange
         let contract = Contract(
-            title: "Apple", messages: ["hi", "lo", "open", "close"]
+            title: "Apple", date: Date(), messages: ["hi", "lo", "open", "close"]
         )
         
         // Act
@@ -88,6 +88,40 @@ final class NetworkClientTests: XCTestCase {
         XCTAssertNil(networkPromise.error)
         XCTAssertEqual(contract.title, networkPromise.value!.title)
         XCTAssertEqual(contract.messages, networkPromise.value!.messages)
+        
+        assertURLRequest(endpoint: self.endpoint, httpMethod: .get)
+    }
+    
+    func testSuccessfulGetRequestWithCustomDateDecodingStrategy() {
+        // Arrange
+        var components = DateComponents()
+        components.year = 1776
+        components.month = 7
+        components.day = 2
+        components.hour = 15
+        components.minute = 16
+        components.second = 17
+        
+        let title = "UNIX Epoch"
+        let date = Calendar.current.date(from: components)!
+        let response: [String : Any] = [
+            "title": title, "date": date.timeIntervalSince1970, "messages": ["test"]
+        ]
+        
+        self.urlSession.mockData = try! JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+        self.urlSession.mockStatusCode = 200
+        self.networkClient = NetworkClient(urlSession: self.urlSession)
+        self.networkClient.dateDecodingStrategy = .secondsSince1970
+        
+        // Act
+        let networkPromise = networkClient.get(self.endpoint, decodingResponseTo: Contract.self)
+        
+        // Assert
+        XCTAssert(waitForPromises(timeout: 1))
+        XCTAssertNotNil(networkPromise.value)
+        XCTAssertNil(networkPromise.error)
+        XCTAssertEqual(title, networkPromise.value!.title)
+        XCTAssertEqual(date, networkPromise.value!.date)
         
         assertURLRequest(endpoint: self.endpoint, httpMethod: .get)
     }
@@ -127,7 +161,7 @@ final class NetworkClientTests: XCTestCase {
     func testSuccessfulPutRequestWithResponse() {
         // Arrange
         let contract = Contract(
-            title: "Apple", messages: ["hi", "lo", "open", "close"]
+            title: "Apple", date: Date(), messages: ["hi", "lo", "open", "close"]
         )
         let body = "Treats of the place Where Oliver Twist was born".data(using: .utf8)!
         let coderPromise = coder.encode(contract)

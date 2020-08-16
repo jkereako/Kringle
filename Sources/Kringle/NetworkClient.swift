@@ -8,25 +8,41 @@
 import Foundation
 import Promises
 
-final public class NetworkClient {
+open class NetworkClient {
+    /// Custom headers
     public var headers: [String: String]
     
+    /// Specify the JSON date encoding strategy
+    public var dateEncodingStrategy: JSONEncoder.DateEncodingStrategy {
+        didSet {
+            coder.encoder.dateEncodingStrategy = dateEncodingStrategy
+        }
+    }
+    
+    /// Specify the JSON date decoding strategy
+    public var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy {
+        didSet {
+            coder.decoder.dateDecodingStrategy = dateDecodingStrategy
+        }
+    }
+    
+    private let coder: Coder
     private let standardHeaders = [
         "Accept": "application/json",
         "Accept-Charset": "UTF-8",
         "Accept-Encoding": "gzip"
     ]
-    
     private let urlSession: URLSession
-    private let coder: Coder
     
     // Allow for dependency injection to make the class testable
     public init(urlSession: URLSession = URLSession(configuration: .default)) {
-        self.headers = [String: String]()
+        headers = [String: String]()
+        dateEncodingStrategy = .deferredToDate
+        dateDecodingStrategy = .deferredToDate
         self.urlSession = urlSession
-        self.coder = Coder()
+        coder = Coder(encoder: JSONEncoder(), decoder: JSONDecoder())
     }
-    
+
     public func get(_ endpoint: Endpoint, query: [String: String] = [:]) -> Promise<Void> {
         return sendRequestIgnoringResponse(endpoint: endpoint, httpMethod: .get, query: query)
     }
@@ -129,7 +145,10 @@ private extension NetworkClient {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
         var urlComponents = URLComponents(string: url.absoluteString)!
         
-        urlComponents.queryItems = query.map { URLQueryItem(name: $0.0, value: $0.1) }
+        if query.count > 0 {
+            urlComponents.queryItems = query.map { URLQueryItem(name: $0.0, value: $0.1) }
+        }
+        
         let mutableRequest = NSMutableURLRequest(url: urlComponents.url!)
         
         mutableRequest.httpMethod = httpMethod.rawValue
