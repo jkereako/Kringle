@@ -11,7 +11,8 @@ import Promises
 open class NetworkClient {
     /// Custom headers
     public var headers: [String: String]
-    
+    public var defaultQueryParams: [String: String]
+
     /// Specify the JSON date encoding strategy
     public var dateEncodingStrategy: JSONEncoder.DateEncodingStrategy {
         didSet {
@@ -37,6 +38,7 @@ open class NetworkClient {
     // Allow for dependency injection to make the class testable
     public init(urlSession: URLSession = URLSession(configuration: .default)) {
         headers = [String: String]()
+        defaultQueryParams = [String: String]()
         dateEncodingStrategy = .deferredToDate
         dateDecodingStrategy = .deferredToDate
         self.urlSession = urlSession
@@ -144,9 +146,24 @@ private extension NetworkClient {
         
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
         var urlComponents = URLComponents(string: url.absoluteString)!
-        
-        if query.count > 0 {
-            urlComponents.queryItems = query.map { URLQueryItem(name: $0.0, value: $0.1) }
+
+        // The Dictionary merge below will replace keys in `query` that match
+        // with keys in `defaultQuery`
+        //
+        // let dictionary = ["a": 1, "b": 2]
+        // let newKeyValues = ["a": 3, "b": 4]
+        //
+        // ["b": 4, "a": 3]
+        //
+        // see: https://stackoverflow.com/questions/26728477/how-to-combine-two-dictionary-instances-in-swift#43615143
+        let mergedQueryParams = defaultQueryParams.merging(query) {
+            (_, new) in new
+        }
+
+        if mergedQueryParams.count > 0 {
+            urlComponents.queryItems = query.map {
+                URLQueryItem(name: $0.0, value: $0.1)
+            }
         }
         
         let mutableRequest = NSMutableURLRequest(url: urlComponents.url!)
