@@ -161,7 +161,7 @@ private extension NetworkClient {
         }
 
         if mergedQueryParams.count > 0 {
-            urlComponents.queryItems = query.map {
+            urlComponents.queryItems = mergedQueryParams.map {
                 URLQueryItem(name: $0.0, value: $0.1)
             }
         }
